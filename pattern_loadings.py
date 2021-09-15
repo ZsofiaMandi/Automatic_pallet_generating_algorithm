@@ -10,8 +10,6 @@ def one_order_pattern(pallet_x, pallet_y, box_x, box_y, box_orientation):
         num_x = int(pallet_x / box_x)
     elif box_orientation == 1:
         num_x = int(pallet_x / box_y)
-    else:
-        raise ValueError("box orientation must be 1 or 0")
 
     # Checking the number of boxes we can put along the Y dimension
     if box_orientation == 0:

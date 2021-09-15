@@ -11,6 +11,9 @@ def generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=False, label_sid
     result_oop_0 = one_order_pattern(pallet_x, pallet_y, box_x, box_y, 0)
     result_oop_1 = one_order_pattern(pallet_x, pallet_y, box_x, box_y, 1)
 
+    print("RESULT OOP 0: ", result_oop_0)
+    print("RESULT OOP 1: ", result_oop_1)
+
     if result_oop_0[0] >= result_oop_1[0]:
         orientation = 0
         rotated = 1
@@ -19,8 +22,8 @@ def generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=False, label_sid
     else:
         orientation = 1
         rotated = 0
-        box_1 = box_y
-        box_0 = box_x
+        box_0 = box_y
+        box_1 = box_x
 
     result_oop = one_order_pattern(pallet_x, pallet_y, box_x, box_y, orientation)
     num_x = result_oop[2]

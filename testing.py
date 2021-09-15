@@ -7,8 +7,12 @@ box_X = 2
 box_Y = 3
 
 
-generate_boxes_oop(pallet_X, pallet_Y,  box_X, box_Y, middle=True)
-generate_boxes_top(pallet_X, pallet_Y, box_X, box_Y)
-generate_boxes_sp(pallet_X, pallet_Y, box_X, box_Y)
+result_OOP = generate_boxes_oop(pallet_X, pallet_Y,  box_X, box_Y)[0]
+result_TOP = generate_boxes_top(pallet_X, pallet_Y, box_X, box_Y)
+result_SP = generate_boxes_sp(pallet_X, pallet_Y, box_X, box_Y)
+
+print("FINAL RESULT OOP", result_OOP)
+print("FINAL RESULT TOP", result_TOP)
+print("FINAL RESULT SP", result_SP)
 
 
