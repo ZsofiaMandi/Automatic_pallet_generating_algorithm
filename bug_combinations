@@ -1,0 +1,5 @@
+1. SP filling 2 spacing isn't happening, maybe check ATTENTION 1
+    pallet_x = 10
+    pallet_y = 9
+    box_x = 4
+    box_y = 3

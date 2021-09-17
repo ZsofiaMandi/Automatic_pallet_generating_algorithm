@@ -1,9 +1,12 @@
 import math
 
+# DEFINING 3 FUNCTIONS FOR THE 3 ALGORITHMS AND CHECKING HOW MANY BOXES WE CAN PUT ON THE PALLET WITH THOSE
+# PATTERNS AND CALCULATING SOME INFORMATION FOR THE BOX GENERATING ALGORITHMS
+
 
 # Defining the algorithm that allows only one rotation of the boxes in one pallet
 def one_order_pattern(pallet_x, pallet_y, box_x, box_y, box_orientation):
-    # returning the results in both orientations
+    # returning the results in the required orientation
 
     # Checking the number of boxes we can put along the X dimension
     if box_orientation == 0:
@@ -113,6 +116,9 @@ def squared_pattern(pallet_x, pallet_y, box_x, box_y):
     filling_yo1_2 = one_order_pattern(rem_space_yx_2, rem_space_yy_2, box_x, box_y, 1)
     filling_yo2_2 = one_order_pattern(rem_space_yx_2, rem_space_yy_2, box_x, box_y, 0)
 
+    # Deciding the best combination for filling the remaining space, checking the number of boxes
+    # we can put in both directions in the remaining two spaces split in both ways
+
     if filling_xo1_1[0] >= filling_xo2_1[0]:
         filling_x_1 = filling_xo1_1
     else:
@@ -145,6 +151,9 @@ def squared_pattern(pallet_x, pallet_y, box_x, box_y):
         rem_space_x_2 = pallet_x - num_squares_row * square_size_xy
         rem_space_y_2 = pallet_y
         splitting = "y"
+
+    # Returning the cost of the packing, along with some information about the remaining space dimensions
+    # for further calculations
 
     cost_of_packing = [packed_boxes, usage_percentage, num_squares_row, num_squares_col, rem_space_x_1,
                        rem_space_y_1, rem_space_x_2, rem_space_y_2, splitting]

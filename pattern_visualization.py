@@ -6,6 +6,9 @@ import math
 def drawing_pallet_pattern(pallet_x, pallet_y, box_dim1, box_dim2, output_box_list, pattern_name,
                            color=color_rgb(200, 200, 200), coloring_directions="None"):
 
+    if (pallet_x < box_dim1 and pallet_x < box_dim2) or (pallet_y < box_dim1 and pallet_y < box_dim2):
+        raise ValueError('Invalid pallet - box combination, please make a pallet size at minimum as big as one box')
+
     a = 50  # ratios for making the same size of dimensions from the output_box_list
     b = 100
 
@@ -41,8 +44,6 @@ def drawing_pallet_pattern(pallet_x, pallet_y, box_dim1, box_dim2, output_box_li
         x = b + box[0] * a + offset_x - box_x / 2
         y = b + box[1] * a + offset_y - box_y / 2
 
-        print("x", x, "y", y)
-
         pt_box1 = Point(x, y)
         pt_box2 = Point(x + box_x, y + box_y)
 
@@ -74,20 +75,22 @@ def drawing_pallet_pattern(pallet_x, pallet_y, box_dim1, box_dim2, output_box_li
 
 def main():
     # Input parameters
-    pallet_x = 9
-    pallet_y = 10
-    box_x = 2
+    pallet_x = 13
+    pallet_y = 9
+    box_x = 3
     box_y = 3
     color_b = color_rgb(211, 204, 236)
     color_c = color_rgb(239, 228, 176)
 
-    oop = generate_boxes_oop(pallet_x, pallet_y, box_x, box_y)[0]
-    top = generate_boxes_top(pallet_x, pallet_y, box_x, box_y)[0]
+    oop_layer_1 = generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=True)[0]
+    oop_layer_2 = generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=True)[1]
+    top = generate_boxes_top(pallet_x, pallet_y, box_x, box_y, middle=True)[0]
     sp = generate_boxes_sp(pallet_x, pallet_y, box_x, box_y)[0]
 
-    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, oop, "One order pattern")
-    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, top, "Two order pattern", color_b)
-    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, sp, "Squared pattern", color_c)
+    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, oop_layer_1, "One order pattern - Layer A")
+    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, oop_layer_2, "One order pattern - Layer B", color_c)
+    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, top, "Two order pattern")
+    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, sp, "Squared pattern")
 
 
 main()
