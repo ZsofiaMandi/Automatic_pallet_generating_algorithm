@@ -1,4 +1,5 @@
 from pattern_loadings import one_order_pattern, two_order_pattern, squared_pattern
+from layer_mirroring import mirroring_layer
 
 # GENERATING THE OUTPUT BOX LISTS IN 2 DIMENSIONS FOR THE 3 ALGORITHMS, BOTH FOR THE FIRST AND SECOND LAYER,
 # BASED ON THE INFORMATION GETTING FROM THE PATTERN LOADING FUNCTIONS
@@ -102,7 +103,8 @@ def generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=False, label_sid
 
 
 # GENERATING THE OUTPUT BOX LIST FOR THE TWO-ORDER PATTERN:
-def generate_boxes_top(pallet_x, pallet_y, box_x, box_y, middle=False, label_side="None", label_place="None"):
+def generate_boxes_top(pallet_x, pallet_y, box_x, box_y, middle=False, label_side="None",
+                       label_place="None", x=True, y=True):
     output_box_list = []
 
     # Getting the two-order pattern results for both starting orientations
@@ -214,11 +216,16 @@ def generate_boxes_top(pallet_x, pallet_y, box_x, box_y, middle=False, label_sid
             box[0] += x_offset
             box[1] += y_offset
 
-    return [output_box_list]
+    # --------- SECOND LAYER --------- #
+
+    output_box_list_mirrored = mirroring_layer(output_box_list, x, y, pallet_x, pallet_y, box_x, box_y, middle)
+
+    return [output_box_list, output_box_list_mirrored]
 
 
 # GENERATING THE OUTPUT BOX LIST FOR THE SQUARED PATTERN:
-def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False, label_side="None", label_place="None"):
+def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False,
+                      label_side="None", label_place="None", x=True, y=True):
     output_box_list = []
 
     # Getting the squared pattern results
@@ -461,4 +468,8 @@ def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False, label_side
             box[0] += x_offset
             box[1] += y_offset
 
-    return [output_box_list]
+    # --------- SECOND LAYER --------- #
+
+    output_box_list_mirrored = mirroring_layer(output_box_list, x, y, pallet_x, pallet_y, box_x, box_y, middle)
+
+    return [output_box_list, output_box_list_mirrored]

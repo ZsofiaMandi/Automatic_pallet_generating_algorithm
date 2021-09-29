@@ -2,13 +2,17 @@ from graphics import *
 from generating_boxlists import generate_boxes_oop, generate_boxes_top, generate_boxes_sp
 import math
 
+# VISUALIZING THE PATTERN LAYERS IN 2 DIMENSIONS
 
+
+# Defining the function what draws one layer from the output box list and from the input values
 def drawing_pallet_pattern(pallet_x, pallet_y, box_dim1, box_dim2, output_box_list, pattern_name,
                            color=color_rgb(200, 200, 200), coloring_directions="None"):
 
     if (pallet_x < box_dim1 and pallet_x < box_dim2) or (pallet_y < box_dim1 and pallet_y < box_dim2):
         raise ValueError('Invalid pallet - box combination, please make a pallet size at minimum as big as one box')
 
+    # Calculating the window size
     a = 50  # ratios for making the same size of dimensions from the output_box_list
     b = 100
 
@@ -53,12 +57,13 @@ def drawing_pallet_pattern(pallet_x, pallet_y, box_dim1, box_dim2, output_box_li
         box.setFill(color)
         box.draw(win)
 
-    #  making a label with the number of packed boxes
+    #  Writing a label with the number of packed boxes
     packed_boxes = len(output_box_list)
     pt_label = Point(win_x / 2, b / 4)
     label = Text(pt_label, "Packed boxes: {}".format(packed_boxes))
     label.draw(win)
 
+    #  Writing a label with the loading of the pallet
     usage = round(packed_boxes * box_x * box_y / (rect_x * rect_y) * 100, 2)
     unpacked_boxes = math.floor(rect_x * rect_y / (box_x * box_y)) - packed_boxes
 
@@ -66,6 +71,7 @@ def drawing_pallet_pattern(pallet_x, pallet_y, box_dim1, box_dim2, output_box_li
     usage_label = Text(pt_usage_label, "Pallet load: {}%".format(usage))
     usage_label.draw(win)
 
+    #  Writing a label with the number of the packed boxes
     pt_unpacked_label = Point(win_x / 2, 2 * b / 4)
     unpacked_label = Text(pt_unpacked_label, "Unpacked boxes: {}".format(unpacked_boxes))
     unpacked_label.draw(win)
@@ -73,24 +79,35 @@ def drawing_pallet_pattern(pallet_x, pallet_y, box_dim1, box_dim2, output_box_li
     win.getMouse()
 
 
+# Calling the drawing for every layer and pattern to test the output
 def main():
     # Input parameters
     pallet_x = 11
-    pallet_y = 10
+    pallet_y = 9
     box_x = 2
     box_y = 3
     color_b = color_rgb(211, 204, 236)
     color_c = color_rgb(239, 228, 176)
 
-    oop_layer_1 = generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=True)[0]
-    oop_layer_2 = generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=True)[1]
-    top = generate_boxes_top(pallet_x, pallet_y, box_x, box_y, middle=True)[0]
-    sp = generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=True)[0]
+    # Generating the required output box lists with the box coordinates for each layer and pattern
+    oop = generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=True)
+    top = generate_boxes_top(pallet_x, pallet_y, box_x, box_y, middle=True)
+    sp = generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=True)
 
+    oop_layer_1 = oop[0]
+    oop_layer_2 = oop[1]
+    top_layer_1 = top[0]
+    top_layer_2 = top[1]
+    sp_layer_1 = sp[0]
+    sp_layer_2 = sp[1]
+
+    # Drawing the different layers
     drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, oop_layer_1, "One order pattern - Layer A")
     drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, oop_layer_2, "One order pattern - Layer B", color_c)
-    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, top, "Two order pattern")
-    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, sp, "Squared pattern")
+    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, top_layer_1, "Two order pattern - Layer A")
+    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, top_layer_2, "Two order pattern - Layer B", color_b)
+    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, sp_layer_1, "Squared pattern - Layer A")
+    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, sp_layer_2, "Squared pattern - Layer B", color_b)
 
 
 main()
