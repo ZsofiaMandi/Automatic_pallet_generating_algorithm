@@ -4,7 +4,7 @@ from pattern_loadings import one_order_pattern, two_order_pattern, squared_patte
 # BASED ON THE INFORMATION GETTING FROM THE PATTERN LOADING FUNCTIONS
 
 
-# Generating the output box list for the One order pattern:
+# GENERATING THE OUTPUT BOX LIST FOR THE ONE-ORDER PATTERN:
 def generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=False, label_side="None", label_place="None"):
     box_sides = [box_x, box_y]
 
@@ -101,10 +101,11 @@ def generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=False, label_sid
     return [output_box_list, output_box_list_rotated]
 
 
+# GENERATING THE OUTPUT BOX LIST FOR THE TWO-ORDER PATTERN:
 def generate_boxes_top(pallet_x, pallet_y, box_x, box_y, middle=False, label_side="None", label_place="None"):
     output_box_list = []
 
-    # Getting thw two-order pattern results for both starting orientations
+    # Getting the two-order pattern results for both starting orientations
     result_top_1 = two_order_pattern(pallet_x, pallet_y, box_x, box_y, 0)
     result_top_2 = two_order_pattern(pallet_x, pallet_y, box_x, box_y, 1)
 
@@ -216,36 +217,35 @@ def generate_boxes_top(pallet_x, pallet_y, box_x, box_y, middle=False, label_sid
     return [output_box_list]
 
 
+# GENERATING THE OUTPUT BOX LIST FOR THE SQUARED PATTERN:
 def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False, label_side="None", label_place="None"):
     output_box_list = []
 
+    # Getting the squared pattern results
     result_sp = squared_pattern(pallet_x, pallet_y, box_x, box_y)
 
+    # Getting how many squares we can put in a row (pallet X dim) and in a col (pallet Y dim)
     num_squares_row = result_sp[2]
     num_squares_col = result_sp[3]
 
-    # Filling the remaining space with boxes
-
+    # Checking the remaining space besides the squares with boxes
     rem_space_x_1 = result_sp[4]
     rem_space_y_1 = result_sp[5]
     rem_space_x_2 = result_sp[6]
     rem_space_y_2 = result_sp[7]
 
-    splitting = result_sp[8]
+    splitting = result_sp[8]    # The split remaining space is bigger along the x dim or the y dim
 
-    print(num_squares_row, num_squares_col, rem_space_x_1, rem_space_y_1, rem_space_x_2, rem_space_y_2, splitting)
-
+    # Filling the remaining spaces with the oop function
     filling_1 = generate_boxes_oop(rem_space_x_1, rem_space_y_1, box_x, box_y)[0]
     filling_2 = generate_boxes_oop(rem_space_x_2, rem_space_y_2, box_x, box_y)[0]
-
-    print("filling 1", filling_1)
-    print("filling 2", filling_2)
 
     num_box_x_filling1 = 0
     num_box_y_filling1 = 0
     num_box_x_filling2 = 0
     num_box_y_filling2 = 0
 
+    # Checking the orientation of the boxes in filling 1
     if len(filling_1) != 0:
         if filling_1[0][0] == box_x / 2:
             orientation_filling1 = 0
@@ -257,6 +257,7 @@ def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False, label_side
         num_box_x_filling1 = filling1_oop[2]
         num_box_y_filling1 = filling1_oop[3]
 
+    # Checking the orientation of the boxes in filling 2
     if len(filling_2) != 0:
         if filling_2[0][0] == box_x / 2:
             orientation_filling2 = 0
@@ -268,17 +269,17 @@ def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False, label_side
         num_box_x_filling2 = filling2_oop[2]
         num_box_y_filling2 = filling2_oop[3]
 
+    # Offsetting the fillings with the width and height of the square block
     for box in filling_1:
         box[1] += num_squares_col * (box_x + box_y)
 
     for box in filling_2:
         box[0] += num_squares_row * (box_x + box_y)
 
-    print("filling_1 for ", filling_1)
-    print("filling_2 for ", filling_2)
-
     # checking if there is remaining space at the end of the rows and columns or not and splitting them
+    # (comparing the square block to the oop fillings)
 
+    # Calculating the number of boxes in a row in the two fillings
     num_box_in_row_filling1 = 0
     num_box_in_row_filling2 = 0
     for box in filling_1:
@@ -288,6 +289,7 @@ def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False, label_side
         if box[1] == filling_2[0][1]:
             num_box_in_row_filling2 += 1
 
+    # Calculating the number of boxes in a column in the two fillings
     num_box_in_col_filling_1 = 0
     num_box_in_col_filling_2 = 0
     for box in filling_1:
@@ -297,73 +299,79 @@ def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False, label_side
         if box[0] == filling_2[0][0]:
             num_box_in_col_filling_2 += 1
 
+    # Calculating the number of rows in the filling 1
     num_rows = 0
     for box in filling_1:
         if box[0] - box_side_split_1 / 2 == 0:
             num_rows += 1
+    # Calculating the number of columns in the filling 2
     num_cols = 0
     for box in filling_2:
         if box[1] - not_box_side_split_2 / 2 == 0:
             num_cols += 1
 
-    print("ROWS", num_rows, "COLS", num_cols)
-
+    # Defining the box dimensions in filling 1 along the pallet X and Y dimensions
     if len(filling_1) != 0:
         if filling_1[0][3] == 0:
-            box_0_x = box_x
-            box_1_x = box_y
+            box_f1_x = box_x
+            box_f1_y = box_y
         elif filling_1[0][3] == 1:
-            box_0_x = box_y
-            box_1_x = box_x
+            box_f1_x = box_y
+            box_f1_y = box_x
     else:
-        box_0_x = 0
-        box_1_x = 0
+        box_f1_x = 0
+        box_f1_y = 0
 
+    # Defining the box dimensions in filling 2 along the pallet X and Y dimensions
     if len(filling_2) != 0:
         if filling_2[0][3] == 0:
-            box_0_y = box_x
-            box_1_y = box_y
+            box_f2_x = box_x
+            box_f2_y = box_y
         elif filling_2[0][3] == 1:
-            box_0_y = box_y
-            box_1_y = box_x
+            box_f2_x = box_y
+            box_f2_y = box_x
     else:
-        box_0_y = 0
-        box_1_y = 0
+        box_f2_x = 0
+        box_f2_y = 0
 
-    print("num_squares_row", num_squares_row, "num_squares_col", num_squares_col)
-
+    # Calculating the remaining space along the X and Y dimensions of the pallet based on which splitting part
+    # is bigger, the one along the X dimension (splitting 1) or the other along the Y dimension (splitting 2)
     if splitting == "x":
-        remaining_space_x = num_squares_row * (box_x + box_y) + num_cols * box_0_y - num_box_in_row_filling1 * box_0_x
-        remaining_space_y = num_squares_col * (box_x + box_y) - num_box_in_col_filling_2 * box_1_y
+        remaining_space_x = num_squares_row * (box_x + box_y) + num_cols * box_f2_x - num_box_in_row_filling1 * box_f1_x
+        remaining_space_y = num_squares_col * (box_x + box_y) - num_box_in_col_filling_2 * box_f2_y
     elif splitting == "y":
-        remaining_space_x = num_squares_row * (box_x + box_y) - num_box_in_row_filling1 * box_0_x
-        remaining_space_y = num_squares_col * (box_x + box_y) + num_rows * box_1_x - num_box_in_col_filling_2 * box_1_y
+        remaining_space_x = num_squares_row * (box_x + box_y) - num_box_in_row_filling1 * box_f1_x
+        remaining_space_y = num_squares_col * (box_x + box_y) + num_rows * box_f1_y - num_box_in_col_filling_2 * box_f2_y
 
-    print("remaining space x", remaining_space_x)
-    print("remaining space y", remaining_space_y)
+    # --------- SPACING --------- #
 
-    square_and_row_spacing_x = 0
-    row_spacing = 0
-
-    if remaining_space_x < 0:
-        square_and_row_spacing_x = abs(remaining_space_x) / (num_squares_row + num_cols - 1)
-    elif remaining_space_x > 0:
+    # Calculating the spacings along X dimension of the pallet
+    square_and_row_spacing_x = 0    # The spacing for the squares and rows (splitting 1) along the X dimension
+    row_spacing = 0                 # The spacing
+    if remaining_space_x < 0:       # When the squares and cols together is wider than the filling 1
+        if num_squares_row + num_cols - 1 != 0:
+            square_and_row_spacing_x = abs(remaining_space_x) / (num_squares_row + num_cols - 1)
+        else:
+            square_and_row_spacing_x = abs(remaining_space_x / 2)
+    elif remaining_space_x > 0:     # When the filling 1 is wider than the squares and cols together
         if num_box_in_row_filling1 - 1 != 0:
             row_spacing = remaining_space_x / (num_box_in_row_filling1 - 1)
 
+    # Calculating the spacing along the Y dimension of the pallet
     square_spacing_y = 0
     col_spacing = 0
-
     if remaining_space_y < 0:
-        # ATTENTION 1
-        if num_squares_col - 1 != 0:
-            square_spacing_y = abs(remaining_space_y / (num_squares_col - 1))
+        if num_squares_col + num_rows - 1 != 0:
+            square_spacing_y = abs(remaining_space_y / (num_squares_col + num_rows - 1))
+        else:
+            square_spacing_y = abs(remaining_space_y / 2)
     elif remaining_space_y > 0:
         if num_box_in_col_filling_2 - 1 != 0:
             col_spacing = remaining_space_y / (num_box_in_col_filling_2 - 1)
 
-    # Making the squares
+    # --------- SQUARES --------- #
 
+    # Making the box coordinates for the first of four elements of the box squares
     for i in range(num_squares_row):
         box_coordinate = [0, 0, 0, 0]
         box_coordinate[0] = box_x * i + box_y * i + square_and_row_spacing_x * i + box_x / 2
@@ -372,6 +380,7 @@ def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False, label_side
             box_coordinate[1] = box_x * j + box_y * j + square_spacing_y * j + box_y / 2
             output_box_list.append(box_coordinate)
 
+    # Making the box coordinates for the second of four elements of the box squares
     for i in range(num_squares_row):
         box_coordinate = [box_x, 0, 0, 1]
         box_coordinate[0] = box_x + box_x * i + box_y * i + square_and_row_spacing_x * i + box_y / 2
@@ -380,6 +389,7 @@ def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False, label_side
             box_coordinate[1] = box_x * j + box_y * j + square_spacing_y * j + box_x / 2
             output_box_list.append(box_coordinate)
 
+    # Making the box coordinates for the third of four elements of the box squares
     for i in range(num_squares_row):
         box_coordinate = [0, box_y, 0, 1]
         box_coordinate[0] = box_x * i + box_y * i + square_and_row_spacing_x * i + box_y / 2
@@ -388,6 +398,7 @@ def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False, label_side
             box_coordinate[1] = box_y + box_x * j + box_y * j + square_spacing_y * j + box_x / 2
             output_box_list.append(box_coordinate)
 
+    # Making the box coordinates for the first element of the box squares
     for i in range(num_squares_row):
         box_coordinate = [box_y, box_x, 0, 0]
         box_coordinate[0] = box_y + box_x * i + box_y * i + square_and_row_spacing_x * i + box_x / 2
@@ -396,10 +407,9 @@ def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False, label_side
             box_coordinate[1] = box_x + box_x * j + box_y * j + square_spacing_y * j + box_y / 2
             output_box_list.append(box_coordinate)
 
-    # Splitting the space between the filled boxes
-    print("row spacing", row_spacing)
-    print("col spacing", col_spacing)
+    # --------- FILLINGS --------- #
 
+    # Making the box coordinates for the filling1
     i = 0
     k = 0
     for x_i in range(num_box_in_row_filling1):
@@ -408,6 +418,7 @@ def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False, label_side
             i += 1
         k += 1
 
+    # Making the box coordinates for the filling2
     j = 0
     for x_j in range(num_box_in_row_filling2):
         m = 0
@@ -416,13 +427,14 @@ def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False, label_side
             j += 1
             m += 1
 
-    print("filling 1 splitted", filling_1)
-    print("filling 2 splitted", filling_2)
-
+    # Adding filling1 and filling2 boxes to the output box list
     output_box_list.extend(filling_1)
     output_box_list.extend(filling_2)
 
+    # --------- CENTERING --------- #
+
     if middle and len(output_box_list) > 0:
+        # Calculating the last box's index from output box list
         max_coordinate = 0
         i = 0
         for box in output_box_list:
@@ -431,8 +443,16 @@ def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False, label_side
                 max_coordinate = coordinate_value
                 max_index = i
             i += 1
-        load_x = output_box_list[max_index][0] + output_box_list[max_index][2]
-        load_y = output_box_list[max_index][1] + output_box_list[max_index][3]
+        # Checking the las box's x and y dimensions
+        if output_box_list[max_index][3] == 0:
+            max_x = box_x
+            max_y = box_y
+        elif output_box_list[max_index][3] == 1:
+            max_x = box_y
+            max_y = box_x
+        # Calculating till where is the pallet loaded with the boxes
+        load_x = output_box_list[max_index][0] + max_x / 2
+        load_y = output_box_list[max_index][1] + max_y / 2
 
         x_offset = (pallet_x - load_x) / 2
         y_offset = (pallet_y - load_y) / 2
@@ -440,7 +460,5 @@ def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False, label_side
         for box in output_box_list:
             box[0] += x_offset
             box[1] += y_offset
-
-    print("SP output box list:             ", output_box_list)
 
     return [output_box_list]

@@ -75,9 +75,9 @@ def drawing_pallet_pattern(pallet_x, pallet_y, box_dim1, box_dim2, output_box_li
 
 def main():
     # Input parameters
-    pallet_x = 13
-    pallet_y = 9
-    box_x = 3
+    pallet_x = 11
+    pallet_y = 10
+    box_x = 2
     box_y = 3
     color_b = color_rgb(211, 204, 236)
     color_c = color_rgb(239, 228, 176)
@@ -85,7 +85,7 @@ def main():
     oop_layer_1 = generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=True)[0]
     oop_layer_2 = generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=True)[1]
     top = generate_boxes_top(pallet_x, pallet_y, box_x, box_y, middle=True)[0]
-    sp = generate_boxes_sp(pallet_x, pallet_y, box_x, box_y)[0]
+    sp = generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=True)[0]
 
     drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, oop_layer_1, "One order pattern - Layer A")
     drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, oop_layer_2, "One order pattern - Layer B", color_c)
