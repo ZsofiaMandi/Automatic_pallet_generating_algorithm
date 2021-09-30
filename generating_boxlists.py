@@ -29,6 +29,9 @@ def generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=False, label_sid
         box_0 = box_y
         box_1 = box_x
 
+    """
+    "  Layer 1 and Layer 2 code are very similar and repetitive. Refactor?
+    """
     # ---------LAYER 1--------- #
     # Using the orientation with the MORE boxes and calculating how many boxes we can put along the X and Y dimensions
     # of the pallet
@@ -38,6 +41,9 @@ def generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=False, label_sid
 
     # Generating the output box list for the one order pattern FIRST LAYER based on the calculated values
     for i in range(num_x):
+        """
+        "  box_coordinate[2] never used?
+        """
         box_coordinate = [0, 0, 0, orientation]
         box_coordinate[0] = box_0 * i + box_0 / 2
         for j in range(num_y):
@@ -69,7 +75,13 @@ def generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=False, label_sid
 
     if middle and len(output_box_list) > 0:
 
+        """
+        "  Layer 1 and Layer 2 code are very similar and repetitive. Refactor?
+        """
         # Centering the FIRST LAYER
+        """
+        "  Orientation can only be 0 or 1, why check for 2 and 3?
+        """
         if output_box_list[-1][3] == 0 or output_box_list[-1][3] == 2:
             load_x = output_box_list[-1][0] + box_x / 2
             load_y = output_box_list[-1][1] + box_y / 2

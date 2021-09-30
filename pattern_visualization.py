@@ -65,12 +65,18 @@ def drawing_pallet_pattern(pallet_x, pallet_y, box_dim1, box_dim2, output_box_li
 
     #  Writing a label with the loading of the pallet
     usage = round(packed_boxes * box_x * box_y / (rect_x * rect_y) * 100, 2)
+    """
+    "  Put below line in the unpacked boxes section below? For consistency, like above in the packed boxes section.
+    """
     unpacked_boxes = math.floor(rect_x * rect_y / (box_x * box_y)) - packed_boxes
 
     pt_usage_label = Point(win_x / 2, 3 * b / 4)
     usage_label = Text(pt_usage_label, "Pallet load: {}%".format(usage))
     usage_label.draw(win)
 
+    """
+    "  Wrong comment.
+    """
     #  Writing a label with the number of the packed boxes
     pt_unpacked_label = Point(win_x / 2, 2 * b / 4)
     unpacked_label = Text(pt_unpacked_label, "Unpacked boxes: {}".format(unpacked_boxes))
