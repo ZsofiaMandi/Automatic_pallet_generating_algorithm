@@ -1,5 +1,7 @@
 from pattern_loadings import one_order_pattern, two_order_pattern, squared_pattern
 from layer_mirroring import mirroring_layer
+from labels import labeling
+
 
 # GENERATING THE OUTPUT BOX LISTS IN 2 DIMENSIONS FOR THE 3 ALGORITHMS, BOTH FOR THE FIRST AND SECOND LAYER,
 # BASED ON THE INFORMATION GETTING FROM THE PATTERN LOADING FUNCTIONS
@@ -7,8 +9,6 @@ from layer_mirroring import mirroring_layer
 
 # GENERATING THE OUTPUT BOX LIST FOR THE ONE-ORDER PATTERN:
 def generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=False, label_side="None", label_place="None"):
-    box_sides = [box_x, box_y]
-
     output_box_list = []
     output_box_list_rotated = []
 
@@ -99,6 +99,12 @@ def generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=False, label_sid
             box[0] += x_offset_rotated
             box[1] += y_offset_rotated
 
+    # --------- LABELING --------- #
+    # Labeling the first and second layer as well
+    if label_side != "None" and label_place != "None":
+        output_box_list = labeling(output_box_list, label_side, label_place)
+        output_box_list_rotated = labeling(output_box_list_rotated, label_side, label_place)
+
     return [output_box_list, output_box_list_rotated]
 
 
@@ -149,7 +155,7 @@ def generate_boxes_top(pallet_x, pallet_y, box_x, box_y, middle=False, label_sid
 
     # --------- ALIGNING THE TWO ORDERS --------- #
     # checking if there is remaining space at the end of the columns or not and splitting them if there is
-    rem_space_y = num_y_o1 * box_1 - num_y_o2 * box_0   # Calculating the remaining space along the pallet Y dimension
+    rem_space_y = num_y_o1 * box_1 - num_y_o2 * box_0  # Calculating the remaining space along the pallet Y dimension
 
     # Checking if the first or second order hangs beyond the Y dimension relative to the other and calculating the
     # spacing for it
@@ -217,8 +223,14 @@ def generate_boxes_top(pallet_x, pallet_y, box_x, box_y, middle=False, label_sid
             box[1] += y_offset
 
     # --------- SECOND LAYER --------- #
-
+    # Making a second layer from the first layer by mirroring it
     output_box_list_mirrored = mirroring_layer(output_box_list, x, y, pallet_x, pallet_y, box_x, box_y, middle)
+
+    # --------- LABELING --------- #
+    # Rotating the boxes in the first and second layer to put the labels in the desired directions
+    if label_side != "None" and label_place != "None":
+        output_box_list = labeling(output_box_list, label_side, label_place)
+        output_box_list_mirrored = labeling(output_box_list_mirrored, label_side, label_place)
 
     return [output_box_list, output_box_list_mirrored]
 
@@ -241,7 +253,7 @@ def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False,
     rem_space_x_2 = result_sp[6]
     rem_space_y_2 = result_sp[7]
 
-    splitting = result_sp[8]    # The split remaining space is bigger along the x dim or the y dim
+    splitting = result_sp[8]  # The split remaining space is bigger along the x dim or the y dim
 
     # Filling the remaining spaces with the oop function
     filling_1 = generate_boxes_oop(rem_space_x_1, rem_space_y_1, box_x, box_y)[0]
@@ -348,19 +360,20 @@ def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False,
         remaining_space_y = num_squares_col * (box_x + box_y) - num_box_in_col_filling_2 * box_f2_y
     elif splitting == "y":
         remaining_space_x = num_squares_row * (box_x + box_y) - num_box_in_row_filling1 * box_f1_x
-        remaining_space_y = num_squares_col * (box_x + box_y) + num_rows * box_f1_y - num_box_in_col_filling_2 * box_f2_y
+        remaining_space_y = num_squares_col * (
+                    box_x + box_y) + num_rows * box_f1_y - num_box_in_col_filling_2 * box_f2_y
 
     # --------- SPACING --------- #
 
     # Calculating the spacings along X dimension of the pallet
-    square_and_row_spacing_x = 0    # The spacing for the squares and rows (splitting 1) along the X dimension
-    row_spacing = 0                 # The spacing
-    if remaining_space_x < 0:       # When the squares and cols together is wider than the filling 1
+    square_and_row_spacing_x = 0  # The spacing for the squares and rows (splitting 1) along the X dimension
+    row_spacing = 0  # The spacing
+    if remaining_space_x < 0:  # When the squares and cols together is wider than the filling 1
         if num_squares_row + num_cols - 1 != 0:
             square_and_row_spacing_x = abs(remaining_space_x) / (num_squares_row + num_cols - 1)
         else:
             square_and_row_spacing_x = abs(remaining_space_x / 2)
-    elif remaining_space_x > 0:     # When the filling 1 is wider than the squares and cols together
+    elif remaining_space_x > 0:  # When the filling 1 is wider than the squares and cols together
         if num_box_in_row_filling1 - 1 != 0:
             row_spacing = remaining_space_x / (num_box_in_row_filling1 - 1)
 
@@ -469,7 +482,13 @@ def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False,
             box[1] += y_offset
 
     # --------- SECOND LAYER --------- #
-
+    # Making a second layer from the first layer by mirroring it
     output_box_list_mirrored = mirroring_layer(output_box_list, x, y, pallet_x, pallet_y, box_x, box_y, middle)
+
+    # --------- LABELING --------- #
+    # Rotating the boxes in the first and second layer to put the labels in the desired directions
+    if label_side != "None" and label_place != "None":
+        #output_box_list = labeling(output_box_list, label_side, label_place)
+        output_box_list_mirrored = labeling(output_box_list_mirrored, label_side, label_place)
 
     return [output_box_list, output_box_list_mirrored]

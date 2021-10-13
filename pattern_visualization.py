@@ -2,13 +2,13 @@ from graphics import *
 from generating_boxlists import generate_boxes_oop, generate_boxes_top, generate_boxes_sp
 import math
 
+
 # VISUALIZING THE PATTERN LAYERS IN 2 DIMENSIONS
 
 
 # Defining the function what draws one layer from the output box list and from the input values
 def drawing_pallet_pattern(pallet_x, pallet_y, box_dim1, box_dim2, output_box_list, pattern_name,
-                           color=color_rgb(200, 200, 200), coloring_directions="None"):
-
+                           labeling=False, label_side="None", color=color_rgb(200, 200, 200)):
     if (pallet_x < box_dim1 and pallet_x < box_dim2) or (pallet_y < box_dim1 and pallet_y < box_dim2):
         raise ValueError('Invalid pallet - box combination, please make a pallet size at minimum as big as one box')
 
@@ -24,9 +24,6 @@ def drawing_pallet_pattern(pallet_x, pallet_y, box_dim1, box_dim2, output_box_li
 
     win = GraphWin(pattern_name, win_x, win_y)
 
-    offset_x = 0
-    offset_y = 0
-
     # drawing the surrounding rectangle what represents the pallet
     pt_pallet1 = Point(b, b)
     pt_pallet2 = Point(100 + rect_x, b + rect_y)
@@ -38,24 +35,58 @@ def drawing_pallet_pattern(pallet_x, pallet_y, box_dim1, box_dim2, output_box_li
     # drawing the rectangles representing the boxes
     for box in output_box_list:
 
-        if box[3] == 0:
-            box_x = box_dim1 * a
-            box_y = box_dim2 * a
-        elif box[3] == 1:
-            box_x = box_dim2 * a
-            box_y = box_dim1 * a
+        if box[3] == 0 or box[3] == 3:
+            box_x = box_dim1 * a  # Current box dimension along pallet X side
+            box_y = box_dim2 * a  # Current box dimension along pallet Y side
+        elif box[3] == 1 or box[3] == 2:
+            box_x = box_dim2 * a  # Current box dimension along pallet X side
+            box_y = box_dim1 * a  # Current box dimension along pallet Y side
 
-        x = b + box[0] * a + offset_x - box_x / 2
-        y = b + box[1] * a + offset_y - box_y / 2
+        x = b + box[0] * a - box_x / 2  # Current box left-up corner's coordinate's x component
+        y = b + box[1] * a - box_y / 2  # Current box left-up corner's coordinate's y component
 
-        pt_box1 = Point(x, y)
-        pt_box2 = Point(x + box_x, y + box_y)
+        pt_box1 = Point(x, y)                   # Current box left-down corner
+        pt_box2 = Point(x + box_x, y + box_y)   # Current box right-down corner
 
-        box = Rectangle(pt_box1, pt_box2)
-        box.setOutline(color_rgb(100, 100, 100))
-        box.setWidth(2)
-        box.setFill(color)
-        box.draw(win)
+        box_draw = Rectangle(pt_box1, pt_box2)
+        box_draw.setOutline(color_rgb(100, 100, 100))
+        box_draw.setWidth(2)
+        box_draw.setFill(color)
+        box_draw.draw(win)
+
+    # Drawing box labels
+    if labeling and label_side != "None":
+
+        for box in output_box_list:
+
+            if box[3] == 0 or box[3] == 3:
+                box_x = box_dim1 * a  # Current box dimension along pallet X side
+                box_y = box_dim2 * a  # Current box dimension along pallet Y side
+            elif box[3] == 1 or box[3] == 2:
+                box_x = box_dim2 * a  # Current box dimension along pallet X side
+                box_y = box_dim1 * a  # Current box dimension along pallet Y side
+
+            x = b + box[0] * a - box_x / 2  # Current box left-up corner's coordinate's x component
+            y = b + box[1] * a - box_y / 2  # Current box left-up corner's coordinate's y component
+
+            if label_side == "Front":
+                if box[3] == 0:
+                    pt_label1 = Point(x + box_x / 10, y)
+                    pt_label2 = Point(x + box_x - box_x / 10, y)
+                elif box[3] == 1:
+                    pt_label1 = Point(x + box_x, y + box_y / 10)
+                    pt_label2 = Point(x + box_x, y + box_y - box_y / 10)
+                elif box[3] == 2:
+                    pt_label1 = Point(x, y + box_y / 10)
+                    pt_label2 = Point(x, y + box_y - box_y / 10)
+                elif box[3] == 3:
+                    pt_label1 = Point(x + box_x / 10, y + box_y)
+                    pt_label2 = Point(x + box_x - box_x / 10, y + box_y)
+
+            label_line = Line(pt_label1, pt_label2)
+            label_line.setOutline(color_rgb(128, 0, 64))
+            label_line.setWidth(3.5)
+            label_line.draw(win)
 
     #  Writing a label with the number of packed boxes
     packed_boxes = len(output_box_list)
@@ -90,9 +121,10 @@ def main():
     color_c = color_rgb(239, 228, 176)
 
     # Generating the required output box lists with the box coordinates for each layer and pattern
-    oop = generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=True)
-    top = generate_boxes_top(pallet_x, pallet_y, box_x, box_y, middle=True)
-    sp = generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=True)
+    oop = generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=True, label_side="Front", label_place="Outwards")
+    top = generate_boxes_top(pallet_x, pallet_y, box_x, box_y, middle=True, label_side="Front", label_place="Outwards")
+
+    sp = generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=True, label_side="Front", label_place="Outwards")
 
     oop_layer_1 = oop[0]
     oop_layer_2 = oop[1]
@@ -102,13 +134,18 @@ def main():
     sp_layer_2 = sp[1]
 
     # Drawing the different layers
-    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, oop_layer_1, "One order pattern - Layer A")
-    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, oop_layer_2, "One order pattern - Layer B", color_c)
-    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, top_layer_1, "Two order pattern - Layer A")
-    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, top_layer_2, "Two order pattern - Layer B", color_b)
-    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, sp_layer_1, "Squared pattern - Layer A")
-    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, sp_layer_2, "Squared pattern - Layer B", color_b)
+    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, oop_layer_1, "One order pattern - Layer A",
+                           labeling=True, label_side="Front")
+    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, oop_layer_2, "One order pattern - Layer B",
+                           labeling=True, label_side="Front", color=color_c)
+    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, top_layer_1, "Two order pattern - Layer A",
+                           labeling=True, label_side="Front")
+    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, top_layer_2, "Two order pattern - Layer B",
+                           labeling=True, label_side="Front", color=color_b)
+    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, sp_layer_1, "Squared pattern - Layer A",
+                           labeling=True, label_side="Front")
+    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, sp_layer_2, "Squared pattern - Layer B",
+                           labeling=True, label_side="Front", color=color_b)
 
 
 main()
-
