@@ -115,8 +115,8 @@ def main():
     # Input parameters
     pallet_x = 11
     pallet_y = 9
-    box_x = 3
-    box_y = 2
+    box_x = 2
+    box_y = 3
     color_b = color_rgb(211, 204, 236)
     color_c = color_rgb(239, 228, 176)
 
