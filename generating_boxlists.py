@@ -102,8 +102,8 @@ def generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=False, label_sid
     # --------- LABELING --------- #
     # Labeling the first and second layer as well
     if label_side != "None" and label_place != "None":
-        output_box_list = labeling(output_box_list, label_side, label_place)
-        output_box_list_rotated = labeling(output_box_list_rotated, label_side, label_place)
+        output_box_list = labeling(output_box_list, label_side, label_place, box_x, box_y)
+        output_box_list_rotated = labeling(output_box_list_rotated, label_side, label_place, box_x, box_y)
 
     return [output_box_list, output_box_list_rotated]
 
@@ -229,8 +229,8 @@ def generate_boxes_top(pallet_x, pallet_y, box_x, box_y, middle=False, label_sid
     # --------- LABELING --------- #
     # Rotating the boxes in the first and second layer to put the labels in the desired directions
     if label_side != "None" and label_place != "None":
-        output_box_list = labeling(output_box_list, label_side, label_place)
-        output_box_list_mirrored = labeling(output_box_list_mirrored, label_side, label_place)
+        output_box_list = labeling(output_box_list, label_side, label_place, box_x, box_y)
+        output_box_list_mirrored = labeling(output_box_list_mirrored, label_side, label_place, box_x, box_y)
 
     return [output_box_list, output_box_list_mirrored]
 
@@ -488,7 +488,7 @@ def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False,
     # --------- LABELING --------- #
     # Rotating the boxes in the first and second layer to put the labels in the desired directions
     if label_side != "None" and label_place != "None":
-        #output_box_list = labeling(output_box_list, label_side, label_place)
-        output_box_list_mirrored = labeling(output_box_list_mirrored, label_side, label_place)
+        output_box_list = labeling(output_box_list, label_side, label_place, box_x, box_y)
+        output_box_list_mirrored = labeling(output_box_list_mirrored, label_side, label_place, box_x, box_y)
 
     return [output_box_list, output_box_list_mirrored]

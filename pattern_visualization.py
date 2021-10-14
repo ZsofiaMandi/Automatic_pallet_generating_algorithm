@@ -115,15 +115,14 @@ def main():
     # Input parameters
     pallet_x = 11
     pallet_y = 9
-    box_x = 2
-    box_y = 3
+    box_x = 3
+    box_y = 2
     color_b = color_rgb(211, 204, 236)
     color_c = color_rgb(239, 228, 176)
 
     # Generating the required output box lists with the box coordinates for each layer and pattern
     oop = generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=True, label_side="Front", label_place="Outwards")
     top = generate_boxes_top(pallet_x, pallet_y, box_x, box_y, middle=True, label_side="Front", label_place="Outwards")
-
     sp = generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=True, label_side="Front", label_place="Outwards")
 
     oop_layer_1 = oop[0]
