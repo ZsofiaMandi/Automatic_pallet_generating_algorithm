@@ -1,11 +1,13 @@
 import copy
 
+# MIRRORING LAYERS
+
 
 def mirroring_layer(box_list, x, y, pallet_x, pallet_y, box_x, box_y, middle=False):
 
     box_list_mirrored = copy.deepcopy(box_list)
 
-    # finding the las box coordinates in the list:
+    # finding the first and last box coordinates in the list:
     max_index = 0
     min_index = 0
     max_coordinate = 0

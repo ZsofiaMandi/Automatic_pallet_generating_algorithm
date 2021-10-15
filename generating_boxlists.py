@@ -1,6 +1,7 @@
 from pattern_loadings import one_order_pattern, two_order_pattern, squared_pattern
 from layer_mirroring import mirroring_layer
 from labels import labeling
+from centering import centering
 
 
 # GENERATING THE OUTPUT BOX LISTS IN 2 DIMENSIONS FOR THE 3 ALGORITHMS, BOTH FOR THE FIRST AND SECOND LAYER,
@@ -8,7 +9,8 @@ from labels import labeling
 
 
 # GENERATING THE OUTPUT BOX LIST FOR THE ONE-ORDER PATTERN:
-def generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=False, label_side="None", label_place="None"):
+def generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=False, stretch=False,
+                       label_side="None", label_place="None", ):
     output_box_list = []
     output_box_list_rotated = []
 
@@ -64,40 +66,11 @@ def generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=False, label_sid
             output_box_list_rotated.append(box_coordinate_rotated)
 
     # --------- CENTERING --------- #
-
     # Aligning the pattern to the middle of the pallet
-
+    # Centering the first and second layer
     if middle and len(output_box_list) > 0:
-
-        # Centering the FIRST LAYER
-        if output_box_list[-1][3] == 0 or output_box_list[-1][3] == 2:
-            load_x = output_box_list[-1][0] + box_x / 2
-            load_y = output_box_list[-1][1] + box_y / 2
-        elif output_box_list[-1][3] == 1 or output_box_list[-1][3] == 3:
-            load_x = output_box_list[-1][0] + box_y / 2
-            load_y = output_box_list[-1][1] + box_x / 2
-
-        x_offset = (pallet_x - load_x) / 2
-        y_offset = (pallet_y - load_y) / 2
-
-        for box in output_box_list:
-            box[0] += x_offset
-            box[1] += y_offset
-
-        # Centering the SECOND LAYER
-        if output_box_list_rotated[-1][3] == 0 or output_box_list_rotated[-1][3] == 2:
-            load_x_rotated = output_box_list_rotated[-1][0] + box_x / 2
-            load_y_rotated = output_box_list_rotated[-1][1] + box_y / 2
-        elif output_box_list_rotated[-1][3] == 1 or output_box_list_rotated[-1][3] == 3:
-            load_x_rotated = output_box_list_rotated[-1][0] + box_y / 2
-            load_y_rotated = output_box_list_rotated[-1][1] + box_x / 2
-
-        x_offset_rotated = (pallet_x - load_x_rotated) / 2
-        y_offset_rotated = (pallet_y - load_y_rotated) / 2
-
-        for box in output_box_list_rotated:
-            box[0] += x_offset_rotated
-            box[1] += y_offset_rotated
+        output_box_list = centering(output_box_list, pallet_x, pallet_y, box_x, box_y)
+        output_box_list_rotated = centering(output_box_list_rotated, pallet_x, pallet_y, box_x, box_y)
 
     # --------- LABELING --------- #
     # Labeling the first and second layer as well
@@ -109,8 +82,8 @@ def generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=False, label_sid
 
 
 # GENERATING THE OUTPUT BOX LIST FOR THE TWO-ORDER PATTERN:
-def generate_boxes_top(pallet_x, pallet_y, box_x, box_y, middle=False, label_side="None",
-                       label_place="None", x=True, y=True):
+def generate_boxes_top(pallet_x, pallet_y, box_x, box_y, middle=False, stretch=False,
+                       label_side="None", label_place="None", x=True, y=True):
     output_box_list = []
 
     # Getting the two-order pattern results for both starting orientations
@@ -191,36 +164,7 @@ def generate_boxes_top(pallet_x, pallet_y, box_x, box_y, middle=False, label_sid
     # --------- CENTERING --------- #
 
     if middle and len(output_box_list) > 0:
-
-        # finding the last box's coordinates in the list:
-        max_coordinate = 0
-        i = 0
-        for box in output_box_list:
-            coordinate_value = box[0] + box[1]
-            if max_coordinate < coordinate_value:
-                max_coordinate = coordinate_value
-                max_index = i
-            i += 1
-
-        # Checking the last box x and y dimension values
-        if output_box_list[max_index][3] == 0:
-            box_x_max = box_x
-            box_y_max = box_y
-        elif output_box_list[max_index][3] == 1:
-            box_x_max = box_y
-            box_y_max = box_x
-
-        # Calculating the offsets along the X and Y dimensions of the pallet
-        load_x = output_box_list[max_index][0] + box_x_max / 2
-        load_y = output_box_list[max_index][1] + box_y_max / 2
-
-        x_offset = (pallet_x - load_x) / 2
-        y_offset = (pallet_y - load_y) / 2
-
-        # Offsetting every box to make a centered pattern
-        for box in output_box_list:
-            box[0] += x_offset
-            box[1] += y_offset
+        output_box_list = centering(output_box_list, pallet_x, pallet_y, box_x, box_y)
 
     # --------- SECOND LAYER --------- #
     # Making a second layer from the first layer by mirroring it
@@ -236,7 +180,7 @@ def generate_boxes_top(pallet_x, pallet_y, box_x, box_y, middle=False, label_sid
 
 
 # GENERATING THE OUTPUT BOX LIST FOR THE SQUARED PATTERN:
-def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False,
+def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False, stretch=False,
                       label_side="None", label_place="None", x=True, y=True):
     output_box_list = []
 
@@ -361,10 +305,9 @@ def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False,
     elif splitting == "y":
         remaining_space_x = num_squares_row * (box_x + box_y) - num_box_in_row_filling1 * box_f1_x
         remaining_space_y = num_squares_col * (
-                    box_x + box_y) + num_rows * box_f1_y - num_box_in_col_filling_2 * box_f2_y
+                box_x + box_y) + num_rows * box_f1_y - num_box_in_col_filling_2 * box_f2_y
 
     # --------- SPACING --------- #
-
     # Calculating the spacings along X dimension of the pallet
     square_and_row_spacing_x = 0  # The spacing for the squares and rows (splitting 1) along the X dimension
     row_spacing = 0  # The spacing
@@ -390,7 +333,6 @@ def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False,
             col_spacing = remaining_space_y / (num_box_in_col_filling_2 - 1)
 
     # --------- SQUARES --------- #
-
     # Making the box coordinates for the first of four elements of the box squares
     for i in range(num_squares_row):
         box_coordinate = [0, 0, 0, 0]
@@ -428,7 +370,6 @@ def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False,
             output_box_list.append(box_coordinate)
 
     # --------- FILLINGS --------- #
-
     # Making the box coordinates for the filling1
     i = 0
     k = 0
@@ -452,34 +393,8 @@ def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False,
     output_box_list.extend(filling_2)
 
     # --------- CENTERING --------- #
-
     if middle and len(output_box_list) > 0:
-        # Calculating the last box's index from output box list
-        max_coordinate = 0
-        i = 0
-        for box in output_box_list:
-            coordinate_value = box[0] + box[1]
-            if max_coordinate < coordinate_value:
-                max_coordinate = coordinate_value
-                max_index = i
-            i += 1
-        # Checking the las box's x and y dimensions
-        if output_box_list[max_index][3] == 0:
-            max_x = box_x
-            max_y = box_y
-        elif output_box_list[max_index][3] == 1:
-            max_x = box_y
-            max_y = box_x
-        # Calculating till where is the pallet loaded with the boxes
-        load_x = output_box_list[max_index][0] + max_x / 2
-        load_y = output_box_list[max_index][1] + max_y / 2
-
-        x_offset = (pallet_x - load_x) / 2
-        y_offset = (pallet_y - load_y) / 2
-
-        for box in output_box_list:
-            box[0] += x_offset
-            box[1] += y_offset
+        output_box_list = centering(output_box_list, pallet_x, pallet_y, box_x, box_y)
 
     # --------- SECOND LAYER --------- #
     # Making a second layer from the first layer by mirroring it

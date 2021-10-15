@@ -103,7 +103,6 @@ def drawing_pallet_pattern(pallet_x, pallet_y, box_dim1, box_dim2, output_box_li
                 pt_label1 = Point(x, y + box_y / 10)
                 pt_label2 = Point(x, y + box_y - box_y / 10)
 
-
             label_line = Line(pt_label1, pt_label2)
             label_line.setOutline(color_rgb(128, 0, 64))
             label_line.setWidth(3.5)
@@ -118,12 +117,11 @@ def drawing_pallet_pattern(pallet_x, pallet_y, box_dim1, box_dim2, output_box_li
     #  Writing a label with the loading of the pallet
     usage = round(packed_boxes * box_x * box_y / (rect_x * rect_y) * 100, 2)
     unpacked_boxes = math.floor(rect_x * rect_y / (box_x * box_y)) - packed_boxes
-
     pt_usage_label = Point(win_x / 2, 3 * b / 4)
     usage_label = Text(pt_usage_label, "Pallet load: {}%".format(usage))
     usage_label.draw(win)
 
-    #  Writing a label with the number of the packed boxes
+    #  Writing a label with the number of the unpacked boxes
     pt_unpacked_label = Point(win_x / 2, 2 * b / 4)
     unpacked_label = Text(pt_unpacked_label, "Unpacked boxes: {}".format(unpacked_boxes))
     unpacked_label.draw(win)
