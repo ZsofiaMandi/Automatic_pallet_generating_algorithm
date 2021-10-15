@@ -4,3 +4,11 @@
     box_x = 4
     box_y = 3
 CHECKED: works as it should, because the first boxes remaining on their original places
+
+2. SP Left - Outwards combination Back side wrong in the square
+    pallet_x = 8
+    pallet_y = 6
+    box_x = 2
+    box_y = 3
+    label_side = "Left"
+    label_place = "Outwards"

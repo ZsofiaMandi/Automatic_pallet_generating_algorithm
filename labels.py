@@ -83,9 +83,8 @@ def labeling(box_list_mirrored, label_side, label_place, box_x, box_y):
 
     # Checking if the min and max index boxes have the same starting and ending point for both orientations
     # if not, it means that the min or max from the boxes is in the middle of the pallet for one of the orientation
-    # and not on the sides, in that case -1 out that index and coordinate,
+    # and not on the sides, in that case -1 out that index and coordinate and index,
     # so it won't match with any of the conditions at labeling
-
     if min_coordinate_0_x - box_x / 2 != min_coordinate_1_x - box_y / 2:
         if min_coordinate_1_x - box_y / 2 < 0:
             min_coordinate_1_x = -1
@@ -163,7 +162,7 @@ def labeling(box_list_mirrored, label_side, label_place, box_x, box_y):
         else:
             min_index_1_y = -1
 
-    # The label is on the front side of the box in the beginning (along with x, the up side from the top view)
+    # The label is on the Front side of the box in the beginning (along with x, the up side from the top view)
     if label_side == "Front":
         for box in box_list_mirrored:
 
@@ -171,33 +170,138 @@ def labeling(box_list_mirrored, label_side, label_place, box_x, box_y):
             if label_place == "Front":
                 pass
 
-            # If box orientation is 0 -> rotate with 180° to orientation 3, if 1 -> all labels will be on the right side
+            # If box orientation is 0 -> rotate with 180° to orientation 2, if 1 -> all labels will be on the right side
             elif label_place == "Back":
                 if box[3] == 0:
-                    box[3] = 3
+                    box[3] = 2
 
             # If box orientation is 0 -> all labels will be on the front side, if 1 -> it's correct
             elif label_place == "Right":
                 pass
 
-            # If box orientation is 0 -> rotate with 180° to orientation 3, if 1 -> all labels will be on the right side
+            # If box orientation is 1 -> rotate with 180° to orientation 3, if 0 -> all labels will be on the front side
             elif label_place == "Left":
                 if box[3] == 1:
-                    box[3] = 2
+                    box[3] = 3
 
             elif label_place == "Outwards":
-
                 if min_index_0_y >= 0:
                     if box[3] == 0 and box[1] == box_list_mirrored[min_index_0_y][1]:    # Front
                         pass
                 if min_index_1_x >= 0:
                     if box[3] == 1 and box[0] == box_list_mirrored[min_index_1_x][0]:    # Left
-                        box[3] = 2
+                        box[3] = 3
                 if max_index_0_y >= 0:
                     if box[3] == 0 and box[1] == box_list_mirrored[max_index_0_y][1]:    # Back
-                        box[3] = 3
+                        box[3] = 2
                 if max_index_1_x >= 0:
                     if box[3] == 1 and box[0] == box_list_mirrored[max_index_1_x][0]:    # Right
+                        pass
+
+    # The label is on the Back side of the box in the beginning (along with x, the down side from the top view)
+    elif label_side == "Back":
+        for box in box_list_mirrored:
+
+            # If box orientation is 0 -> it's correct, if 1 -> all labels will be on the left side
+            if label_place == "Back":
+                pass
+
+            # If box orientation is 0 -> rotate with 180° to orientation 2, if 1 -> all labels will be on the left side
+            elif label_place == "Front":
+                if box[3] == 0:
+                    box[3] = 2
+
+            # If box orientation is 0 -> all labels will be on the back side, if 1 -> it's correct
+            elif label_place == "Left":
+                pass
+
+            # If box orientation is 1 -> rotate with 180° to orientation 3, if 0 -> all labels will be on the left side
+            elif label_place == "Right":
+                if box[3] == 1:
+                    box[3] = 3
+
+            elif label_place == "Outwards":
+                if min_index_0_y >= 0:
+                    if box[3] == 0 and box[1] == box_list_mirrored[min_index_0_y][1]:    # Front
+                        box[3] = 2
+                if min_index_1_x >= 0:
+                    if box[3] == 1 and box[0] == box_list_mirrored[min_index_1_x][0]:    # Left
+                        pass
+                if max_index_0_y >= 0:
+                    if box[3] == 0 and box[1] == box_list_mirrored[max_index_0_y][1]:    # Back
+                        pass
+                if max_index_1_x >= 0:
+                    if box[3] == 1 and box[0] == box_list_mirrored[max_index_1_x][0]:    # Right
+                        box[3] = 3
+
+    elif label_side == "Left":
+        for box in box_list_mirrored:
+
+            # If box orientation is 1 -> rotate with 180° to orientation 3, if 0 -> all labels will be on the left side
+            if label_place == "Back":
+                if box[3] == 1:
+                    box[3] = 3
+
+            # If box orientation is 1 -> it's correct, if 0 -> all labels will be on the left side
+            elif label_place == "Front":
+                pass
+
+            # If box orientation is 1 -> all labels will be on the front side, if 0 -> it's correct
+            elif label_place == "Left":
+                pass
+
+            # If box orientation is 0 -> rotate with 180° to orientation 2, if 1 -> all labels will be on the front side
+            elif label_place == "Right":
+                if box[3] == 0:
+                    box[3] = 2
+
+            elif label_place == "Outwards":
+                if min_index_1_y >= 0:
+                    if box[3] == 1 and box[1] == box_list_mirrored[min_index_1_y][1]:    # Front
+                        pass
+                if min_index_0_x >= 0:
+                    if box[3] == 0 and box[0] == box_list_mirrored[min_index_0_x][0]:    # Left
+                        pass
+                if max_index_1_y >= 0:
+                    if box[3] == 1 and box[1] == box_list_mirrored[max_index_1_y][1]:    # Back
+                        box[3] = 3
+                if max_index_0_x >= 0:
+                    if box[3] == 0 and box[0] == box_list_mirrored[max_index_0_x][0]:    # Right
+                        box[3] = 2
+
+    elif label_side == "Right":
+        for box in box_list_mirrored:
+
+            # If box orientation is 1 -> rotate with 180° to orientation 3, if 0 -> all labels will be on the left side
+            if label_place == "Back":
+                pass
+
+            # If box orientation is 1 -> it's correct, if 0 -> all labels will be on the left side
+            elif label_place == "Front":
+                if box[3] == 1:
+                    box[3] = 3
+
+            # If box orientation is 1 -> all labels will be on the front side, if 0 -> it's correct
+            elif label_place == "Left":
+                if box[3] == 0:
+                    box[3] = 2
+
+            # If box orientation is 0 -> rotate with 180° to orientation 2, if 1 -> all labels will be on the front side
+            elif label_place == "Right":
+                pass
+
+            elif label_place == "Outwards":
+                if min_index_1_y >= 0:
+                    if box[3] == 1 and box[1] == box_list_mirrored[min_index_1_y][1]:    # Front
+                        box[3] = 3
+                if min_index_0_x >= 0:
+                    if box[3] == 0 and box[0] == box_list_mirrored[min_index_0_x][0]:    # Left
+                        box[3] = 2
+                if max_index_1_y >= 0:
+                    if box[3] == 1 and box[1] == box_list_mirrored[max_index_1_y][1]:    # Back
+                        pass
+                if max_index_0_x >= 0:
+                    if box[3] == 0 and box[0] == box_list_mirrored[max_index_0_x][0]:    # Right
                         pass
 
     return box_list_mirrored
