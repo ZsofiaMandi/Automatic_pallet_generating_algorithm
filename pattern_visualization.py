@@ -133,7 +133,7 @@ def drawing_pallet_pattern(pallet_x, pallet_y, box_dim1, box_dim2, output_box_li
 def main():
     # Input parameters
     pallet_x = 11
-    pallet_y = 8
+    pallet_y = 9
     box_x = 3
     box_y = 2
     color_b = color_rgb(211, 204, 236)
