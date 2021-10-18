@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from generating_boxlists import generate_boxes_top
+from generating_boxlists import generate_boxes_oop
 from z_dimension import generating_3D_output
 import random
 
@@ -14,28 +14,25 @@ box_X = 3
 box_Y = 2
 box_Z = 2
 
-top = generate_boxes_top(pallet_X, pallet_Y, box_X, box_Y, middle=True, label_side="Right", label_place="Outwards")
-top_layer_1 = top[0]
-top_layer_2 = top[1]
-output_box_list = generating_3D_output(top_layer_1, top_layer_2, box_Z,
+oop = generate_boxes_oop(pallet_X, pallet_Y, box_X, box_Y, middle=True, label_side="Right", label_place="Outwards")
+oop_layer_1 = oop[0]
+oop_layer_2 = oop[1]
+output_box_list = generating_3D_output(oop_layer_1, oop_layer_2, box_Z,
                                        generation_method="max_height", generation_limit=11, slip_sheet=0)
 
 
 def random_color():
-    r = random.randint(0, 255)
-    g = random.randint(0, 255)
-    b = random.randint(0, 255)
-    rand_color = (r, g, b)
-    return rand_color
+    return np.random.uniform(0, 1, [1, 3])
 
-color1 = random_color()
-print(color1)
 
 def visualize_in_3D(box_list_3D, pallet_x, pallet_y, pallet_z, box_x, box_y, box_z):
+    # dimension of the volume
     dimension = max(pallet_x, pallet_y, pallet_z) + 1
-    # prepare some coordinates
+
+    # define 3D coordinate space
     x, y, z = np.indices((dimension, dimension, dimension))
 
+    # define cubes to be plotted from box list
     cubes = []
     for box in box_list_3D:
         if box[3] == 0 or box[3] == 2:
@@ -48,19 +45,19 @@ def visualize_in_3D(box_list_3D, pallet_x, pallet_y, pallet_z, box_x, box_y, box
                (x >= box[0] - box_x / 2) & (y >= box[1] - box_y / 2) & (z >= box[2] - box_z)
         cubes.append(cube)
 
+    # declare arrays for voxels and their color
     voxels = cubes[0]
+    colors = np.empty(voxels.shape + (3,))
+    colors[cubes[0], :] = random_color()
+
+    # define voxels and their color
     for cube in cubes[1:]:
         voxels |= cube
-    print(voxels.shape)
-    # set the colors of each object
-    colors = np.empty(voxels.shape, dtype=object)
-    # colors[cube1] = 'blue'
-    # colors[cube2] = 'red'
-    # colors[cube3] = 'green'
+        colors[cube, :] = random_color()
 
-    # and plot everything
+    # plot everything
     ax = plt.figure().add_subplot(projection='3d')
-    ax.voxels(voxels, facecolors="red")
+    ax.voxels(voxels, facecolors=colors)
 
     plt.show()
 
