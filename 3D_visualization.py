@@ -14,11 +14,7 @@ box_X = 3
 box_Y = 2
 box_Z = 2
 
-top = generate_boxes_top(pallet_X, pallet_Y, box_X, box_Y, middle=True, label_side="Right", label_place="Outwards")
-top_layer_1 = top[0]
-top_layer_2 = top[1]
-print("layer_A", top_layer_1)
-print("layer_b", top_layer_2)
+top_layer_1, top_layer_2 = generate_boxes_top(pallet_X, pallet_Y, box_X, box_Y, middle=True, label_side="Right", label_place="Outwards")
 
 output_box_list = generating_3D_output(top_layer_1, top_layer_2, box_Z,
                                        generation_method="max_load", generation_limit=100, mass_box=2, slip_sheet=0)
@@ -42,11 +38,9 @@ def visualize_in_3D(box_list_3D, pallet_x, pallet_y, pallet_z, box_x, box_y, box
     cubes = []
     for box in box_list_3D:
         if box[3] == 0 or box[3] == 2:
-            box_x = box_x
-            box_y = box_y
+            pass
         elif box[3] == 1 or box[3] == 3:
-            box_x = box_y
-            box_y = box_x
+            box_x, box_y = box_y, box_x
         cube = (x <= box[0] + box_x / 2) & (y <= box[1] + box_y / 2) & (z <= box[2]) & \
                (x >= box[0] - box_x / 2) & (y >= box[1] - box_y / 2) & (z >= box[2] - box_z)
         cubes.append(cube)
