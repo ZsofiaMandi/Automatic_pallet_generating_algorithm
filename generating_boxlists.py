@@ -2,6 +2,7 @@ from pattern_loadings import one_order_pattern, two_order_pattern, squared_patte
 from layer_mirroring import mirroring_layer
 from labels import labeling
 from centering import centering
+from stretching import stretching
 
 
 # GENERATING THE OUTPUT BOX LISTS IN 2 DIMENSIONS FOR THE 3 ALGORITHMS, BOTH FOR THE FIRST AND SECOND LAYER,
@@ -53,14 +54,14 @@ def generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=False, stretch=F
     # Using the orientation with the LESS boxes and calculating how many boxes we can put along the X and Y dimensions
     # of the pallet
     result_oop_rotated = one_order_pattern(pallet_x, pallet_y, box_x, box_y, rotated)
-    num_x = result_oop_rotated[2]
-    num_y = result_oop_rotated[3]
+    num_x_rotated = result_oop_rotated[2]
+    num_y_rotated = result_oop_rotated[3]
 
     # Generating the output box list for the one order pattern SECOND LAYER (rotated) based on the calculated values
-    for i in range(num_x):
+    for i in range(num_x_rotated):
         box_coordinate_rotated = [0, 0, 0, rotated]
         box_coordinate_rotated[0] = box_1 * i + box_1 / 2
-        for j in range(num_y):
+        for j in range(num_y_rotated):
             box_coordinate_rotated = [box_coordinate_rotated[0], 0, 0, rotated]
             box_coordinate_rotated[1] = box_0 * j + box_0 / 2
             output_box_list_rotated.append(box_coordinate_rotated)
