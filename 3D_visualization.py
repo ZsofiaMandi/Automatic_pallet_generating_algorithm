@@ -21,7 +21,7 @@ print("layer_A", top_layer_1)
 print("layer_b", top_layer_2)
 
 output_box_list = generating_3D_output(top_layer_1, top_layer_2, box_Z,
-                                       generation_method="max_load", generation_limit=100, mass_box=2, slip_sheet=0 )
+                                       generation_method="max_load", generation_limit=100, mass_box=2, slip_sheet=0)
 
 
 def random_color():
