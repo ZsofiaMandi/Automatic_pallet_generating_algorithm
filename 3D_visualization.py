@@ -7,7 +7,7 @@ from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 
 # Input parameters
-pallet_X = 11
+pallet_X = 12
 pallet_Y = 9
 pallet_Z = 12
 box_X = 3
@@ -17,8 +17,11 @@ box_Z = 2
 top = generate_boxes_top(pallet_X, pallet_Y, box_X, box_Y, middle=True, label_side="Right", label_place="Outwards")
 top_layer_1 = top[0]
 top_layer_2 = top[1]
+print("layer_A", top_layer_1)
+print("layer_b", top_layer_2)
+
 output_box_list = generating_3D_output(top_layer_1, top_layer_2, box_Z,
-                                       generation_method="max_height", generation_limit=11, slip_sheet=0)
+                                       generation_method="max_load", generation_limit=100, mass_box=2, slip_sheet=0 )
 
 
 def random_color():
@@ -29,7 +32,7 @@ def random_color():
     return rand_color
 
 color1 = random_color()
-print(color1)
+
 
 def visualize_in_3D(box_list_3D, pallet_x, pallet_y, pallet_z, box_x, box_y, box_z):
     dimension = max(pallet_x, pallet_y, pallet_z) + 1
@@ -51,7 +54,6 @@ def visualize_in_3D(box_list_3D, pallet_x, pallet_y, pallet_z, box_x, box_y, box
     voxels = cubes[0]
     for cube in cubes[1:]:
         voxels |= cube
-    print(voxels.shape)
     # set the colors of each object
     colors = np.empty(voxels.shape, dtype=object)
     # colors[cube1] = 'blue'
