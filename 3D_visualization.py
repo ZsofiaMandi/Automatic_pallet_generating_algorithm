@@ -7,16 +7,14 @@ from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 
 # Input parameters
-pallet_X = 11
+pallet_X = 10
 pallet_Y = 9
 pallet_Z = 12
 box_X = 3
 box_Y = 2
 box_Z = 2
 
-oop = generate_boxes_oop(pallet_X, pallet_Y, box_X, box_Y, middle=True, label_side="Right", label_place="Outwards")
-oop_layer_1 = oop[0]
-oop_layer_2 = oop[1]
+oop_layer_1, oop_layer_2 = generate_boxes_oop(pallet_X, pallet_Y, box_X, box_Y, middle=True, label_side="Right", label_place="Outwards")
 output_box_list = generating_3D_output(oop_layer_1, oop_layer_2, box_Z,
                                        generation_method="max_height", generation_limit=11, slip_sheet=0)
 
@@ -35,14 +33,16 @@ def visualize_in_3D(box_list_3D, pallet_x, pallet_y, pallet_z, box_x, box_y, box
     # define cubes to be plotted from box list
     cubes = []
     for box in box_list_3D:
+        box_x_init = box_x
+        box_y_init = box_y
         if box[3] == 0 or box[3] == 2:
-            box_x = box_x
-            box_y = box_y
+            box_x_init = box_x_init
+            box_y_init = box_y_init
         elif box[3] == 1 or box[3] == 3:
-            box_x = box_y
-            box_y = box_x
-        cube = (x <= box[0] + box_x / 2) & (y <= box[1] + box_y / 2) & (z <= box[2]) & \
-               (x >= box[0] - box_x / 2) & (y >= box[1] - box_y / 2) & (z >= box[2] - box_z)
+            box_x_init, box_y_init = box_y_init, box_x_init
+        cube = (x < box[0] + box_x_init / 2) & (y < box[1] + box_y_init / 2) & (z < box[2]) & \
+               (x >= box[0] - box_x_init / 2) & (y >= box[1] - box_y_init / 2) & (z >= box[2] - box_z)
+
         cubes.append(cube)
 
     # declare arrays for voxels and their color
@@ -59,6 +59,8 @@ def visualize_in_3D(box_list_3D, pallet_x, pallet_y, pallet_z, box_x, box_y, box
     ax = plt.figure().add_subplot(projection='3d')
     ax.voxels(voxels, facecolors=colors)
 
+    plt.xlabel("X axis")
+    plt.ylabel("Y axis")
     plt.show()
 
 
