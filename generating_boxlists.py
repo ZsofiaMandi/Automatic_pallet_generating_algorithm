@@ -311,27 +311,27 @@ def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False, stretch=Fa
     # --------- SPACING --------- #
     # Calculating the spacings along X dimension of the pallet
     square_and_row_spacing_x = 0  # The spacing for the squares and rows (splitting 1) along the X dimension
-    row_spacing = 0  # The spacing
-    if remaining_space_x < 0:  # When the squares and cols together is wider than the filling 1
-        if num_squares_row + num_cols - 1 != 0:
+    row_spacing_f1_x = 0  # The spacing
+    col_spacing_f2_x = 0
+    if remaining_space_x < 0:
+        if num_squares_row + num_cols - 1 != 0: # When the filling 1 is wider than the squares and cols together
             square_and_row_spacing_x = abs(remaining_space_x) / (num_squares_row + num_cols - 1)
-        else:
-            square_and_row_spacing_x = abs(remaining_space_x / 2)
-    elif remaining_space_x > 0:  # When the filling 1 is wider than the squares and cols together
+            col_spacing_f2_x = abs(remaining_space_x) / (num_squares_row + num_cols - 1)
+    elif remaining_space_x > 0:  # When the squares and cols together is wider than the filling 1
         if num_box_in_row_filling1 - 1 != 0:
-            row_spacing = remaining_space_x / (num_box_in_row_filling1 - 1)
+            row_spacing_f1_x = remaining_space_x / (num_box_in_row_filling1 - 1)
 
     # Calculating the spacing along the Y dimension of the pallet
     square_spacing_y = 0
-    col_spacing = 0
+    col_spacing_f2_y = 0
+    row_spacing_f1_y = 0
     if remaining_space_y < 0:
         if num_squares_col + num_rows - 1 != 0:
             square_spacing_y = abs(remaining_space_y / (num_squares_col + num_rows - 1))
-        else:
-            square_spacing_y = abs(remaining_space_y / 2)
+            row_spacing_f1_y = abs(remaining_space_y / (num_squares_col + num_rows - 1))
     elif remaining_space_y > 0:
         if num_box_in_col_filling_2 - 1 != 0:
-            col_spacing = remaining_space_y / (num_box_in_col_filling_2 - 1)
+            col_spacing_f2_y = remaining_space_y / (num_box_in_col_filling_2 - 1)
 
     # --------- SQUARES --------- #
     # Making the box coordinates for the first of four elements of the box squares
@@ -374,18 +374,22 @@ def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False, stretch=Fa
     # Making the box coordinates for the filling1
     i = 0
     k = 0
+    print("row_spacing", row_spacing_f1_x)
     for x_i in range(num_box_in_row_filling1):
         for y_i in range(num_box_in_col_filling_1):
-            filling_1[i][0] += row_spacing * k
+            filling_1[i][1] += row_spacing_f1_y * (y_i + num_squares_col - 1 + 1)
+            filling_1[i][0] += row_spacing_f1_x * k
             i += 1
         k += 1
 
     # Making the box coordinates for the filling2
     j = 0
+    print("col_spacing", col_spacing_f2_y)
     for x_j in range(num_box_in_row_filling2):
         m = 0
         for y_j in range(num_box_in_col_filling_2):
-            filling_2[j][1] += col_spacing * m
+            filling_2[j][0] += col_spacing_f2_x * (x_j + num_squares_row - 1 + 1)
+            filling_2[j][1] += col_spacing_f2_y * m
             j += 1
             m += 1
 
