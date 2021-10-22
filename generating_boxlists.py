@@ -79,6 +79,13 @@ def generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=False, stretch=F
         output_box_list = labeling(output_box_list, label_side, label_place, box_x, box_y)
         output_box_list_rotated = labeling(output_box_list_rotated, label_side, label_place, box_x, box_y)
 
+    for box in output_box_list:
+        box[0] = round(box[0], 4)
+        box[1] = round(box[1], 4)
+    for box in output_box_list_rotated:
+        box[0] = round(box[0], 4)
+        box[1] = round(box[1], 4)
+
     return [output_box_list, output_box_list_rotated]
 
 
@@ -176,6 +183,13 @@ def generate_boxes_top(pallet_x, pallet_y, box_x, box_y, middle=False, stretch=F
     if label_side != "None" and label_place != "None":
         output_box_list = labeling(output_box_list, label_side, label_place, box_x, box_y)
         output_box_list_mirrored = labeling(output_box_list_mirrored, label_side, label_place, box_x, box_y)
+
+    for box in output_box_list:
+        box[0] = round(box[0], 4)
+        box[1] = round(box[1], 4)
+    for box in output_box_list_mirrored:
+        box[0] = round(box[0], 4)
+        box[1] = round(box[1], 4)
 
     return [output_box_list, output_box_list_mirrored]
 
@@ -410,5 +424,12 @@ def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False, stretch=Fa
     if label_side != "None" and label_place != "None":
         output_box_list = labeling(output_box_list, label_side, label_place, box_x, box_y)
         output_box_list_mirrored = labeling(output_box_list_mirrored, label_side, label_place, box_x, box_y)
+
+    for box in output_box_list:
+        box[0] = round(box[0], 4)
+        box[1] = round(box[1], 4)
+    for box in output_box_list_mirrored:
+        box[0] = round(box[0], 4)
+        box[1] = round(box[1], 4)
 
     return [output_box_list, output_box_list_mirrored]

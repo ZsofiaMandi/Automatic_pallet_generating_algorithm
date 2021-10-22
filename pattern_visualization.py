@@ -132,12 +132,12 @@ def drawing_pallet_pattern(pallet_x, pallet_y, box_dim1, box_dim2, output_box_li
 # Calling the drawing for every layer and pattern to test the output
 def main():
     # Input parameters
-    pallet_x = 530 / 10 / 4
-    pallet_y = 600 / 10 / 4
-    pallet_z = 250 / 10 / 4
-    box_x = 135 / 10 / 4
-    box_y = 170 / 10 / 4
-    box_z = 110 / 10 / 4
+    pallet_x = 500 / 10 / 5
+    pallet_y = 550 / 10 / 5
+    pallet_z = 250 / 10 / 5
+    box_x = 135 / 10 / 5
+    box_y = 170 / 10 / 5
+    box_z = 110 / 10 / 5
     color_b = color_rgb(211, 204, 236)
     color_c = color_rgb(239, 228, 176)
 
@@ -156,15 +156,17 @@ def main():
     sp_layer_1 = sp[0]
     sp_layer_2 = sp[1]
 
-    # Drawing the different layers
-    # drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, oop_layer_1, "One order pattern - Layer A",
-    #                        labeling=True, label_side="Right")
-    # drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, oop_layer_2, "One order pattern - Layer B",
-    #                        labeling=True, label_side="Right", color=color_c)
-    # drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, top_layer_1, "Two order pattern - Layer A",
-    #                        labeling=True, label_side="Right")
-    # drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, top_layer_2, "Two order pattern - Layer B",
-    #                        labeling=True, label_side="Right", color=color_b)
+    print(top_layer_2)
+
+    #Drawing the different layers
+    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, oop_layer_1, "One order pattern - Layer A",
+                           labeling=True, label_side="Right")
+    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, oop_layer_2, "One order pattern - Layer B",
+                           labeling=True, label_side="Right", color=color_c)
+    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, top_layer_1, "Two order pattern - Layer A",
+                           labeling=True, label_side="Right")
+    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, top_layer_2, "Two order pattern - Layer B",
+                           labeling=True, label_side="Right", color=color_b)
     drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, sp_layer_1, "Squared pattern - Layer A",
                            labeling=True, label_side="Right")
     drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, sp_layer_2, "Squared pattern - Layer B",
