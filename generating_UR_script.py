@@ -1,11 +1,11 @@
-from generating_boxlists import generate_boxes_sp
+from generating_boxlists import generate_boxes_top
 from z_dimension import generating_3D_output
 from rpy_to_rotvector import euler_to_rotVec
 import copy
 
 # Input parameters
-pallet_X = 530 / 1000
-pallet_Y = 600 / 1000
+pallet_X = 500 / 1000
+pallet_Y = 550 / 1000
 pallet_Z = 250 / 1000
 box_X = 135 / 1000
 box_Y = 170 / 1000
@@ -13,10 +13,10 @@ box_Z = 110 / 1000
 Pick_up_pose = [691.35 / 1000, 385.66 / 1000, 102.5 / 1000, 2.221, -2.221, 0.0]
 Pallet_coordinate_system = [-298.51 / 1000, -783.0 / 1000, -17.5 / 1000, 0.0, 0.0, 0.0]
 
-sp_layer_1, sp_layer_2 = generate_boxes_sp(pallet_X, pallet_Y, box_X, box_Y,
+tp_layer_1, tp_layer_2 = generate_boxes_top(pallet_X, pallet_Y, box_X, box_Y,
                                            middle=True, label_side="Left", label_place="Outwards")
 
-output_box_list = generating_3D_output(sp_layer_1, sp_layer_2, box_Z,
+output_box_list = generating_3D_output(tp_layer_1, tp_layer_2, box_Z,
                                        generation_method="max_height", generation_limit=pallet_Z)
 
 print(output_box_list)

@@ -132,11 +132,11 @@ def drawing_pallet_pattern(pallet_x, pallet_y, box_dim1, box_dim2, output_box_li
 # Calling the drawing for every layer and pattern to test the output
 def main():
     # Input parameters
-    pallet_x = 500 / 10 / 5
-    pallet_y = 550 / 10 / 5
-    pallet_z = 250 / 10 / 5
-    box_x = 135 / 10 / 5
-    box_y = 170 / 10 / 5
+    pallet_x = 11
+    pallet_y = 7
+    pallet_z = 10
+    box_x = 2
+    box_y = 3
     box_z = 110 / 10 / 5
     color_b = color_rgb(211, 204, 236)
     color_c = color_rgb(239, 228, 176)

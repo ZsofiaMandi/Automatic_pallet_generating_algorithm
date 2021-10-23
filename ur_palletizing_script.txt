@@ -13,14 +13,14 @@ sleep(1)
 #Move back to pick up approach pose
 movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],p[0.69135, 0.38566, 0.2525, 2.221, -2.221, 0.0]), a_l, v_l)
 #Move to box approach pose
-movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.0775, 0.0975, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(0)])), a_j , v_j)
+movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.08, 0.09, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(0)])), a_j , v_j)
 #Move to box pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.0775, 0.0975, 0.103, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(0)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.08, 0.09, 0.103, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(0)])), a_l , v_l)
 #Release box
 vg_release(channel=2, timeout=0.0, autoidle=False, tool_index=0)
 sleep(1)
 #Move back to box approach pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.0775, 0.0975, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(0)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.08, 0.09, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(0)])), a_l , v_l)
 
 #Move to pick up approach pose
 movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0], p[0.69135, 0.38566, 0.2525, 2.221, -2.221, 0.0]), a_j, v_j)
@@ -32,14 +32,14 @@ sleep(1)
 #Move back to pick up approach pose
 movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],p[0.69135, 0.38566, 0.2525, 2.221, -2.221, 0.0]), a_l, v_l)
 #Move to box approach pose
-movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.23, 0.08, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_j , v_j)
+movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.08, 0.275, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(0)])), a_j , v_j)
 #Move to box pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.23, 0.08, 0.103, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.08, 0.275, 0.103, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(0)])), a_l , v_l)
 #Release box
 vg_release(channel=2, timeout=0.0, autoidle=False, tool_index=0)
 sleep(1)
 #Move back to box approach pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.23, 0.08, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.08, 0.275, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(0)])), a_l , v_l)
 
 #Move to pick up approach pose
 movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0], p[0.69135, 0.38566, 0.2525, 2.221, -2.221, 0.0]), a_j, v_j)
@@ -51,14 +51,14 @@ sleep(1)
 #Move back to pick up approach pose
 movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],p[0.69135, 0.38566, 0.2525, 2.221, -2.221, 0.0]), a_l, v_l)
 #Move to box approach pose
-movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.095, 0.25, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_j , v_j)
+movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.08, 0.46, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(0)])), a_j , v_j)
 #Move to box pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.095, 0.25, 0.103, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.08, 0.46, 0.103, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(0)])), a_l , v_l)
 #Release box
 vg_release(channel=2, timeout=0.0, autoidle=False, tool_index=0)
 sleep(1)
 #Move back to box approach pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.095, 0.25, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.08, 0.46, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(0)])), a_l , v_l)
 
 #Move to pick up approach pose
 movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0], p[0.69135, 0.38566, 0.2525, 2.221, -2.221, 0.0]), a_j, v_j)
@@ -70,14 +70,14 @@ sleep(1)
 #Move back to pick up approach pose
 movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],p[0.69135, 0.38566, 0.2525, 2.221, -2.221, 0.0]), a_l, v_l)
 #Move to box approach pose
-movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2475, 0.2325, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(0)])), a_j , v_j)
+movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2325, 0.0725, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_j , v_j)
 #Move to box pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2475, 0.2325, 0.103, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(0)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2325, 0.0725, 0.103, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
 #Release box
 vg_release(channel=2, timeout=0.0, autoidle=False, tool_index=0)
 sleep(1)
 #Move back to box approach pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2475, 0.2325, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(0)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2325, 0.0725, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
 
 #Move to pick up approach pose
 movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0], p[0.69135, 0.38566, 0.2525, 2.221, -2.221, 0.0]), a_j, v_j)
@@ -89,14 +89,14 @@ sleep(1)
 #Move back to pick up approach pose
 movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],p[0.69135, 0.38566, 0.2525, 2.221, -2.221, 0.0]), a_l, v_l)
 #Move to box approach pose
-movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.095, 0.385, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_j , v_j)
+movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2325, 0.2075, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_j , v_j)
 #Move to box pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.095, 0.385, 0.103, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2325, 0.2075, 0.103, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
 #Release box
 vg_release(channel=2, timeout=0.0, autoidle=False, tool_index=0)
 sleep(1)
 #Move back to box approach pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.095, 0.385, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2325, 0.2075, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
 
 #Move to pick up approach pose
 movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0], p[0.69135, 0.38566, 0.2525, 2.221, -2.221, 0.0]), a_j, v_j)
@@ -108,14 +108,14 @@ sleep(1)
 #Move back to pick up approach pose
 movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],p[0.69135, 0.38566, 0.2525, 2.221, -2.221, 0.0]), a_l, v_l)
 #Move to box approach pose
-movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.095, 0.52, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(90)])), a_j , v_j)
+movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2325, 0.3425, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_j , v_j)
 #Move to box pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.095, 0.52, 0.103, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2325, 0.3425, 0.103, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
 #Release box
 vg_release(channel=2, timeout=0.0, autoidle=False, tool_index=0)
 sleep(1)
 #Move back to box approach pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.095, 0.52, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2325, 0.3425, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
 
 #Move to pick up approach pose
 movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0], p[0.69135, 0.38566, 0.2525, 2.221, -2.221, 0.0]), a_j, v_j)
@@ -127,14 +127,14 @@ sleep(1)
 #Move back to pick up approach pose
 movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],p[0.69135, 0.38566, 0.2525, 2.221, -2.221, 0.0]), a_l, v_l)
 #Move to box approach pose
-movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.265, 0.385, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_j , v_j)
+movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2325, 0.4775, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(90)])), a_j , v_j)
 #Move to box pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.265, 0.385, 0.103, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2325, 0.4775, 0.103, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(90)])), a_l , v_l)
 #Release box
 vg_release(channel=2, timeout=0.0, autoidle=False, tool_index=0)
 sleep(1)
 #Move back to box approach pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.265, 0.385, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2325, 0.4775, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(90)])), a_l , v_l)
 
 #Move to pick up approach pose
 movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0], p[0.69135, 0.38566, 0.2525, 2.221, -2.221, 0.0]), a_j, v_j)
@@ -146,14 +146,14 @@ sleep(1)
 #Move back to pick up approach pose
 movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],p[0.69135, 0.38566, 0.2525, 2.221, -2.221, 0.0]), a_l, v_l)
 #Move to box approach pose
-movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.265, 0.52, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(90)])), a_j , v_j)
+movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.4025, 0.0725, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_j , v_j)
 #Move to box pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.265, 0.52, 0.103, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.4025, 0.0725, 0.103, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
 #Release box
 vg_release(channel=2, timeout=0.0, autoidle=False, tool_index=0)
 sleep(1)
 #Move back to box approach pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.265, 0.52, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.4025, 0.0725, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
 
 #Move to pick up approach pose
 movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0], p[0.69135, 0.38566, 0.2525, 2.221, -2.221, 0.0]), a_j, v_j)
@@ -165,14 +165,14 @@ sleep(1)
 #Move back to pick up approach pose
 movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],p[0.69135, 0.38566, 0.2525, 2.221, -2.221, 0.0]), a_l, v_l)
 #Move to box approach pose
-movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.435, 0.385, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_j , v_j)
+movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.4025, 0.2075, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_j , v_j)
 #Move to box pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.435, 0.385, 0.103, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.4025, 0.2075, 0.103, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
 #Release box
 vg_release(channel=2, timeout=0.0, autoidle=False, tool_index=0)
 sleep(1)
 #Move back to box approach pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.435, 0.385, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.4025, 0.2075, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
 
 #Move to pick up approach pose
 movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0], p[0.69135, 0.38566, 0.2525, 2.221, -2.221, 0.0]), a_j, v_j)
@@ -184,14 +184,14 @@ sleep(1)
 #Move back to pick up approach pose
 movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],p[0.69135, 0.38566, 0.2525, 2.221, -2.221, 0.0]), a_l, v_l)
 #Move to box approach pose
-movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.435, 0.52, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(90)])), a_j , v_j)
+movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.4025, 0.3425, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_j , v_j)
 #Move to box pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.435, 0.52, 0.103, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.4025, 0.3425, 0.103, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
 #Release box
 vg_release(channel=2, timeout=0.0, autoidle=False, tool_index=0)
 sleep(1)
 #Move back to box approach pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.435, 0.52, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.4025, 0.3425, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
 
 #Move to pick up approach pose
 movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0], p[0.69135, 0.38566, 0.2525, 2.221, -2.221, 0.0]), a_j, v_j)
@@ -203,33 +203,14 @@ sleep(1)
 #Move back to pick up approach pose
 movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],p[0.69135, 0.38566, 0.2525, 2.221, -2.221, 0.0]), a_l, v_l)
 #Move to box approach pose
-movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.435, 0.08, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_j , v_j)
+movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.4025, 0.4775, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(90)])), a_j , v_j)
 #Move to box pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.435, 0.08, 0.103, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.4025, 0.4775, 0.103, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(90)])), a_l , v_l)
 #Release box
 vg_release(channel=2, timeout=0.0, autoidle=False, tool_index=0)
 sleep(1)
 #Move back to box approach pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.435, 0.08, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
-
-#Move to pick up approach pose
-movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0], p[0.69135, 0.38566, 0.2525, 2.221, -2.221, 0.0]), a_j, v_j)
-#Move to pick up pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],p[0.69135, 0.38566, 0.1025, 2.221, -2.221, 0.0]), a_l, v_l)
-#Grip box
-vg_grip(channel=2, vacuum=30, timeout=0.0, alert=False, tool_index=0)
-sleep(1)
-#Move back to pick up approach pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],p[0.69135, 0.38566, 0.2525, 2.221, -2.221, 0.0]), a_l, v_l)
-#Move to box approach pose
-movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.435, 0.25, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_j , v_j)
-#Move to box pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.435, 0.25, 0.103, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
-#Release box
-vg_release(channel=2, timeout=0.0, autoidle=False, tool_index=0)
-sleep(1)
-#Move back to box approach pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.435, 0.25, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.4025, 0.4775, 0.253, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(90)])), a_l , v_l)
 
 #Move to pick up approach pose
 movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0], p[0.69135, 0.38566, 0.40249999999999997, 2.221, -2.221, 0.0]), a_j, v_j)
@@ -241,14 +222,14 @@ sleep(1)
 #Move back to pick up approach pose
 movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],p[0.69135, 0.38566, 0.40249999999999997, 2.221, -2.221, 0.0]), a_l, v_l)
 #Move to box approach pose
-movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.4525, 0.5025, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(180)])), a_j , v_j)
+movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.42, 0.46, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(180)])), a_j , v_j)
 #Move to box pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.4525, 0.5025, 0.213, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(180)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.42, 0.46, 0.213, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(180)])), a_l , v_l)
 #Release box
 vg_release(channel=2, timeout=0.0, autoidle=False, tool_index=0)
 sleep(1)
 #Move back to box approach pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.4525, 0.5025, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(180)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.42, 0.46, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(180)])), a_l , v_l)
 
 #Move to pick up approach pose
 movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0], p[0.69135, 0.38566, 0.40249999999999997, 2.221, -2.221, 0.0]), a_j, v_j)
@@ -260,14 +241,14 @@ sleep(1)
 #Move back to pick up approach pose
 movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],p[0.69135, 0.38566, 0.40249999999999997, 2.221, -2.221, 0.0]), a_l, v_l)
 #Move to box approach pose
-movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.3, 0.52, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(90)])), a_j , v_j)
+movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.42, 0.275, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(180)])), a_j , v_j)
 #Move to box pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.3, 0.52, 0.213, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.42, 0.275, 0.213, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(180)])), a_l , v_l)
 #Release box
 vg_release(channel=2, timeout=0.0, autoidle=False, tool_index=0)
 sleep(1)
 #Move back to box approach pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.3, 0.52, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.42, 0.275, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(180)])), a_l , v_l)
 
 #Move to pick up approach pose
 movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0], p[0.69135, 0.38566, 0.40249999999999997, 2.221, -2.221, 0.0]), a_j, v_j)
@@ -279,14 +260,14 @@ sleep(1)
 #Move back to pick up approach pose
 movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],p[0.69135, 0.38566, 0.40249999999999997, 2.221, -2.221, 0.0]), a_l, v_l)
 #Move to box approach pose
-movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.435, 0.35, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_j , v_j)
+movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.42, 0.09, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(180)])), a_j , v_j)
 #Move to box pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.435, 0.35, 0.213, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.42, 0.09, 0.213, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(180)])), a_l , v_l)
 #Release box
 vg_release(channel=2, timeout=0.0, autoidle=False, tool_index=0)
 sleep(1)
 #Move back to box approach pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.435, 0.35, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.42, 0.09, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(180)])), a_l , v_l)
 
 #Move to pick up approach pose
 movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0], p[0.69135, 0.38566, 0.40249999999999997, 2.221, -2.221, 0.0]), a_j, v_j)
@@ -298,14 +279,14 @@ sleep(1)
 #Move back to pick up approach pose
 movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],p[0.69135, 0.38566, 0.40249999999999997, 2.221, -2.221, 0.0]), a_l, v_l)
 #Move to box approach pose
-movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2825, 0.3675, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(0)])), a_j , v_j)
+movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2675, 0.4775, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(90)])), a_j , v_j)
 #Move to box pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2825, 0.3675, 0.213, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(0)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2675, 0.4775, 0.213, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(90)])), a_l , v_l)
 #Release box
 vg_release(channel=2, timeout=0.0, autoidle=False, tool_index=0)
 sleep(1)
 #Move back to box approach pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2825, 0.3675, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(0)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2675, 0.4775, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(90)])), a_l , v_l)
 
 #Move to pick up approach pose
 movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0], p[0.69135, 0.38566, 0.40249999999999997, 2.221, -2.221, 0.0]), a_j, v_j)
@@ -317,14 +298,14 @@ sleep(1)
 #Move back to pick up approach pose
 movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],p[0.69135, 0.38566, 0.40249999999999997, 2.221, -2.221, 0.0]), a_l, v_l)
 #Move to box approach pose
-movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.435, 0.215, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_j , v_j)
+movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2675, 0.3425, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_j , v_j)
 #Move to box pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.435, 0.215, 0.213, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2675, 0.3425, 0.213, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
 #Release box
 vg_release(channel=2, timeout=0.0, autoidle=False, tool_index=0)
 sleep(1)
 #Move back to box approach pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.435, 0.215, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2675, 0.3425, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
 
 #Move to pick up approach pose
 movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0], p[0.69135, 0.38566, 0.40249999999999997, 2.221, -2.221, 0.0]), a_j, v_j)
@@ -336,14 +317,14 @@ sleep(1)
 #Move back to pick up approach pose
 movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],p[0.69135, 0.38566, 0.40249999999999997, 2.221, -2.221, 0.0]), a_l, v_l)
 #Move to box approach pose
-movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.435, 0.08, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_j , v_j)
+movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2675, 0.2075, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_j , v_j)
 #Move to box pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.435, 0.08, 0.213, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2675, 0.2075, 0.213, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
 #Release box
 vg_release(channel=2, timeout=0.0, autoidle=False, tool_index=0)
 sleep(1)
 #Move back to box approach pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.435, 0.08, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2675, 0.2075, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
 
 #Move to pick up approach pose
 movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0], p[0.69135, 0.38566, 0.40249999999999997, 2.221, -2.221, 0.0]), a_j, v_j)
@@ -355,14 +336,14 @@ sleep(1)
 #Move back to pick up approach pose
 movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],p[0.69135, 0.38566, 0.40249999999999997, 2.221, -2.221, 0.0]), a_l, v_l)
 #Move to box approach pose
-movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.265, 0.215, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_j , v_j)
+movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2675, 0.0725, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_j , v_j)
 #Move to box pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.265, 0.215, 0.213, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2675, 0.0725, 0.213, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
 #Release box
 vg_release(channel=2, timeout=0.0, autoidle=False, tool_index=0)
 sleep(1)
 #Move back to box approach pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.265, 0.215, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.2675, 0.0725, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
 
 #Move to pick up approach pose
 movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0], p[0.69135, 0.38566, 0.40249999999999997, 2.221, -2.221, 0.0]), a_j, v_j)
@@ -374,14 +355,14 @@ sleep(1)
 #Move back to pick up approach pose
 movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],p[0.69135, 0.38566, 0.40249999999999997, 2.221, -2.221, 0.0]), a_l, v_l)
 #Move to box approach pose
-movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.265, 0.08, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_j , v_j)
+movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.0975, 0.4775, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(90)])), a_j , v_j)
 #Move to box pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.265, 0.08, 0.213, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.0975, 0.4775, 0.213, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(90)])), a_l , v_l)
 #Release box
 vg_release(channel=2, timeout=0.0, autoidle=False, tool_index=0)
 sleep(1)
 #Move back to box approach pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.265, 0.08, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.0975, 0.4775, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(90)])), a_l , v_l)
 
 #Move to pick up approach pose
 movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0], p[0.69135, 0.38566, 0.40249999999999997, 2.221, -2.221, 0.0]), a_j, v_j)
@@ -393,14 +374,14 @@ sleep(1)
 #Move back to pick up approach pose
 movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],p[0.69135, 0.38566, 0.40249999999999997, 2.221, -2.221, 0.0]), a_l, v_l)
 #Move to box approach pose
-movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.095, 0.215, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_j , v_j)
+movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.0975, 0.3425, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_j , v_j)
 #Move to box pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.095, 0.215, 0.213, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.0975, 0.3425, 0.213, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
 #Release box
 vg_release(channel=2, timeout=0.0, autoidle=False, tool_index=0)
 sleep(1)
 #Move back to box approach pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.095, 0.215, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.0975, 0.3425, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
 
 #Move to pick up approach pose
 movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0], p[0.69135, 0.38566, 0.40249999999999997, 2.221, -2.221, 0.0]), a_j, v_j)
@@ -412,14 +393,14 @@ sleep(1)
 #Move back to pick up approach pose
 movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],p[0.69135, 0.38566, 0.40249999999999997, 2.221, -2.221, 0.0]), a_l, v_l)
 #Move to box approach pose
-movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.095, 0.08, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_j , v_j)
+movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.0975, 0.2075, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_j , v_j)
 #Move to box pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.095, 0.08, 0.213, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.0975, 0.2075, 0.213, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
 #Release box
 vg_release(channel=2, timeout=0.0, autoidle=False, tool_index=0)
 sleep(1)
 #Move back to box approach pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.095, 0.08, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.0975, 0.2075, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
 
 #Move to pick up approach pose
 movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0], p[0.69135, 0.38566, 0.40249999999999997, 2.221, -2.221, 0.0]), a_j, v_j)
@@ -431,31 +412,12 @@ sleep(1)
 #Move back to pick up approach pose
 movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],p[0.69135, 0.38566, 0.40249999999999997, 2.221, -2.221, 0.0]), a_l, v_l)
 #Move to box approach pose
-movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.095, 0.52, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(90)])), a_j , v_j)
+movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.0975, 0.0725, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_j , v_j)
 #Move to box pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.095, 0.52, 0.213, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.0975, 0.0725, 0.213, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
 #Release box
 vg_release(channel=2, timeout=0.0, autoidle=False, tool_index=0)
 sleep(1)
 #Move back to box approach pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.095, 0.52, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(90)])), a_l , v_l)
-
-#Move to pick up approach pose
-movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0], p[0.69135, 0.38566, 0.40249999999999997, 2.221, -2.221, 0.0]), a_j, v_j)
-#Move to pick up pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],p[0.69135, 0.38566, 0.1025, 2.221, -2.221, 0.0]), a_l, v_l)
-#Grip box
-vg_grip(channel=2, vacuum=30, timeout=0.0, alert=False, tool_index=0)
-sleep(1)
-#Move back to pick up approach pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],p[0.69135, 0.38566, 0.40249999999999997, 2.221, -2.221, 0.0]), a_l, v_l)
-#Move to box approach pose
-movej(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.095, 0.35, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_j , v_j)
-#Move to box pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.095, 0.35, 0.213, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
-#Release box
-vg_release(channel=2, timeout=0.0, autoidle=False, tool_index=0)
-sleep(1)
-#Move back to box approach pose
-movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.095, 0.35, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
+movel(pose_trans(p[-0.29851, -0.783, -0.0175, 0.0, 0.0, 0.0],pose_trans(p[0.0975, 0.0725, 0.363, 2.221, -2.221, 0.0],p[0.0, 0.0, 0.0, 0.0, 0.0, d2r(-90)])), a_l , v_l)
 
