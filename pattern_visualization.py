@@ -13,8 +13,11 @@ def drawing_pallet_pattern(pallet_x, pallet_y, box_dim1, box_dim2, output_box_li
         raise ValueError('Invalid pallet - box combination, please make a pallet size at minimum as big as one box')
 
     # Calculating the window size
-    a = 50  # ratios for making the same size of dimensions from the output_box_list
-    b = 100
+
+    wider_side = max(pallet_x, pallet_y)
+    i = wider_side / 10
+    a = 50 / i  # ratios for making the same size of dimensions from the output_box_list
+    b = 2 * a
 
     rect_x = pallet_x * a
     rect_y = pallet_y * a
@@ -26,7 +29,7 @@ def drawing_pallet_pattern(pallet_x, pallet_y, box_dim1, box_dim2, output_box_li
 
     # drawing the surrounding rectangle what represents the pallet
     pt_pallet1 = Point(b, b)
-    pt_pallet2 = Point(100 + rect_x, b + rect_y)
+    pt_pallet2 = Point(b + rect_x, b + rect_y)
     pallet = Rectangle(pt_pallet1, pt_pallet2)
     pallet.setOutline(color_rgb(120, 120, 120))
     pallet.setWidth(5)
@@ -133,11 +136,11 @@ def drawing_pallet_pattern(pallet_x, pallet_y, box_dim1, box_dim2, output_box_li
 def main():
     # Input parameters
     pallet_x = 11
-    pallet_y = 7
+    pallet_y = 9
     pallet_z = 10
-    box_x = 2
-    box_y = 3
-    box_z = 110 / 10 / 5
+    box_x = 3
+    box_y = 2
+    box_z = 2
     color_b = color_rgb(211, 204, 236)
     color_c = color_rgb(239, 228, 176)
 
@@ -156,9 +159,7 @@ def main():
     sp_layer_1 = sp[0]
     sp_layer_2 = sp[1]
 
-    print(top_layer_2)
-
-    #Drawing the different layers
+    # Drawing the different layers
     drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, oop_layer_1, "One order pattern - Layer A",
                            labeling=True, label_side="Right")
     drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, oop_layer_2, "One order pattern - Layer B",

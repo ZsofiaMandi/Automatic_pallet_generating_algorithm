@@ -8,7 +8,7 @@ import numpy as np
 
 # Input parameters
 pallet_X = 12
-pallet_Y = 9
+pallet_Y = 10
 pallet_Z = 12
 box_X = 3
 box_Y = 2

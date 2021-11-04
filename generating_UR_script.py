@@ -1,6 +1,5 @@
 from generating_boxlists import generate_boxes_top
 from z_dimension import generating_3D_output
-from rpy_to_rotvector import euler_to_rotVec
 import copy
 
 # Input parameters
@@ -18,8 +17,6 @@ tp_layer_1, tp_layer_2 = generate_boxes_top(pallet_X, pallet_Y, box_X, box_Y,
 
 output_box_list = generating_3D_output(tp_layer_1, tp_layer_2, box_Z,
                                        generation_method="max_height", generation_limit=pallet_Z)
-
-print(output_box_list)
 
 
 def generating_UR_script(output_box_list_3D, pick_up_pose,

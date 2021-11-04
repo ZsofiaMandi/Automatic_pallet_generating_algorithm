@@ -388,7 +388,6 @@ def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False, stretch=Fa
     # Making the box coordinates for the filling1
     i = 0
     k = 0
-    print("row_spacing", row_spacing_f1_x)
     for x_i in range(num_box_in_row_filling1):
         for y_i in range(num_box_in_col_filling_1):
             filling_1[i][1] += row_spacing_f1_y * (y_i + num_squares_col - 1 + 1)
@@ -398,7 +397,6 @@ def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False, stretch=Fa
 
     # Making the box coordinates for the filling2
     j = 0
-    print("col_spacing", col_spacing_f2_y)
     for x_j in range(num_box_in_row_filling2):
         m = 0
         for y_j in range(num_box_in_col_filling_2):

@@ -72,11 +72,9 @@ def two_order_pattern(pallet_x, pallet_y, box_x, box_y, orientation):
 
         num_new_boxes_x = int(remaining_x / box_1)
         num_new_boxes_y = int(pallet_y / box_0)
-        num_boxes = num_of_cols_new * num_of_rows + num_new_boxes_x * num_new_boxes_y
+        packed_boxes = num_of_cols_new * num_of_rows + num_new_boxes_x * num_new_boxes_y
 
-        pallet_percentage = (num_boxes * box_x * box_y) / (pallet_x * pallet_y)
-
-        pattern = [num_of_cols_new, num_of_rows, num_new_boxes_x, num_new_boxes_y, num_boxes, pallet_percentage]
+        pattern = [num_of_cols_new, num_of_rows, num_new_boxes_x, num_new_boxes_y, packed_boxes]
 
         cost_of_patterns.append(pattern)
 
