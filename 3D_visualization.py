@@ -7,12 +7,12 @@ from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 
 # Input parameters
-pallet_X = 12
-pallet_Y = 10
-pallet_Z = 12
-box_X = 3
-box_Y = 2
-box_Z = 2
+pallet_X = 110
+pallet_Y = 90
+pallet_Z = 80
+box_X = 30
+box_Y = 20
+box_Z = 20
 
 top_layer_1, top_layer_2 = generate_boxes_top(pallet_X, pallet_Y, box_X, box_Y, middle=True, label_side="Right", label_place="Outwards")
 

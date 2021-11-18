@@ -15,7 +15,7 @@ def centering(output_box_list, pallet_x, pallet_y, box_x, box_y):
             max_coordinate = coordinate_value
             max_index = i
         i += 1
-    # Checking the las box's x and y dimensions
+    # Checking the last box's x and y dimensions
     if box_list_centered[max_index][3] == 0:
         max_x = box_x
         max_y = box_y

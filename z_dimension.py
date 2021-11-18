@@ -8,7 +8,7 @@ import copy
 def generating_3D_output(layer_1, layer_2, box_z, generation_method, generation_limit, mass_box=0, slip_sheet=0):
 
     # The generation can be done in 3 different ways, maximizing the height, the load or the number of boxes
-    """generation_method = 'max_height', 'max_load', 'number_of_boxes'"""
+    """generation_method = 'max_height', 'max_load', 'number_of_layers'"""
     output_3D_box_list = []
 
     # Calculating the number of layers on top of each other with the limitation of the whole structure's height
@@ -42,11 +42,17 @@ def generating_3D_output(layer_1, layer_2, box_z, generation_method, generation_
                 else:
                     total_mass += num_boxes_layer_B * mass_box
 
-    elif generation_method == "number_of_boxes":
-        exact_number = generation_limit     # the exact number of boxes for the whole pallet
-        num_boxes_layer_A = len(layer_1)
-        num_boxes_layer_B = len(layer_2)
-        # TODO
+        if total_mass > max_load:
+            num_of_layers -= 1
+            total_mass = 0
+            for i in range(num_of_layers):
+                if i % 2 == 0:
+                    total_mass += num_boxes_layer_A * mass_box
+                else:
+                    total_mass += num_boxes_layer_B * mass_box
+
+    elif generation_method == "number_of_layers":
+        num_of_layers = generation_limit
 
     # Generating the 3D output based on the number of layers
     for i in range(num_of_layers):

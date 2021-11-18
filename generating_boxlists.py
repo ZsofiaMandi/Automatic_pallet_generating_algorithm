@@ -11,9 +11,12 @@ from stretching import stretching
 
 # GENERATING THE OUTPUT BOX LIST FOR THE ONE-ORDER PATTERN:
 def generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=False, stretch=False,
-                       label_side="None", label_place="None", ):
+                       label_side="None", label_place="None", gap=0):
     output_box_list = []
     output_box_list_rotated = []
+
+    box_x = box_x + gap / 2
+    box_y = box_y + gap / 2
 
     # Getting the information from the pattern loading functions about how many boxes we can put on the pallet
     # for both orders
@@ -91,8 +94,11 @@ def generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=False, stretch=F
 
 # GENERATING THE OUTPUT BOX LIST FOR THE TWO-ORDER PATTERN:
 def generate_boxes_top(pallet_x, pallet_y, box_x, box_y, middle=False, stretch=False,
-                       label_side="None", label_place="None", x=True, y=True):
+                       label_side="None", label_place="None", x=True, y=True, gap=0):
     output_box_list = []
+
+    box_x = box_x + gap / 2
+    box_y = box_y + gap / 2
 
     # Getting the two-order pattern results for both starting orientations
     result_top_1 = two_order_pattern(pallet_x, pallet_y, box_x, box_y, 0)
@@ -196,8 +202,11 @@ def generate_boxes_top(pallet_x, pallet_y, box_x, box_y, middle=False, stretch=F
 
 # GENERATING THE OUTPUT BOX LIST FOR THE SQUARED PATTERN:
 def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False, stretch=False,
-                      label_side="None", label_place="None", x=True, y=True):
+                      label_side="None", label_place="None", x=True, y=True, gap=0):
     output_box_list = []
+
+    box_x = box_x + gap / 2
+    box_y = box_y + gap / 2
 
     # Getting the squared pattern results
     result_sp = squared_pattern(pallet_x, pallet_y, box_x, box_y)
@@ -243,9 +252,6 @@ def generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=False, stretch=Fa
         else:
             orientation_filling2 = 1
             not_box_side_split_2 = box_x
-        filling2_oop = one_order_pattern(rem_space_x_2, rem_space_y_2, box_x, box_y, orientation_filling2)
-        num_box_x_filling2 = filling2_oop[2]
-        num_box_y_filling2 = filling2_oop[3]
 
     # Offsetting the fillings with the width and height of the square block
     for box in filling_1:

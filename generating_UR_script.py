@@ -20,7 +20,7 @@ output_box_list = generating_3D_output(tp_layer_1, tp_layer_2, box_Z,
 
 
 def generating_UR_script(output_box_list_3D, pick_up_pose,
-                         pallet_coordinate_system, speed_j=0.8, acc_j=1, acc_l=0.8, speed_l=0.08, slip_sheet_pose=None,
+                         pallet_coordinate_system, speed_j=0.8, acc_j=1, acc_l=0.8, speed_l=0.08,
                          pick_up_offset=0.15, box_down_offset=0.15, vacuum=30):
     with open('ur_palletizing_script.txt', 'w+') as f:
         f.write('a_j={}\n'.format(acc_j))
@@ -35,7 +35,7 @@ def generating_UR_script(output_box_list_3D, pick_up_pose,
 
             i = num - int(output_box_list_3D[-1][2] / box[2]) + 1
             pick_up_pose_approach = copy.deepcopy(pick_up_pose)
-            pick_up_pose_approach[2] += pick_up_offset * i
+            pick_up_pose_approach[2] = output_box_list_3D[0][2] * i + pick_up_offset
 
             if box[3] == 0:
                 rotation = 0
@@ -45,11 +45,6 @@ def generating_UR_script(output_box_list_3D, pick_up_pose,
                 rotation = 180
             elif box[3] == 3:
                 rotation = 90
-
-            yaw = 0
-            pitch = 0
-            roll = rotation
-            rx, ry, rz = euler_to_rotVec(yaw, pitch, roll)
 
             box_xyz_str = ""
             box_z_approach_str = ""
