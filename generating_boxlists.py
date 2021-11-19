@@ -93,7 +93,7 @@ def generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=False, stretch=F
 
 
 # GENERATING THE OUTPUT BOX LIST FOR THE TWO-ORDER PATTERN:
-def generate_boxes_top(pallet_x, pallet_y, box_x, box_y, middle=False, stretch=False,
+def generate_boxes_top(pallet_x, pallet_y, box_x, box_y, middle=False,
                        label_side="None", label_place="None", x=True, y=True, gap=0):
     output_box_list = []
 

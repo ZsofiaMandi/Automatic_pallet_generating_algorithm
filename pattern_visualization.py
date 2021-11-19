@@ -1,5 +1,6 @@
 from graphics import *
 from generating_boxlists import generate_boxes_oop, generate_boxes_top, generate_boxes_sp
+from pallet_rotation import rotating_top_pallet
 import math
 
 
@@ -135,11 +136,11 @@ def drawing_pallet_pattern(pallet_x, pallet_y, box_dim1, box_dim2, output_box_li
 # Calling the drawing for every layer and pattern to test the output
 def main():
     # Input parameters
-    pallet_x = 500 / 50
-    pallet_y = 550 / 50
-    box_x = 123 / 50
-    box_y = 157 / 50
-    gap = 20 / 50
+    pallet_x = 28
+    pallet_y = 11
+    box_x = 3
+    box_y = 2
+    gap = 0
     color_b = color_rgb(211, 204, 236)
     color_c = color_rgb(239, 228, 176)
 
@@ -148,13 +149,15 @@ def main():
                              label_side="Left", label_place="Outwards", gap=gap)
     top = generate_boxes_top(pallet_x, pallet_y, box_x, box_y, middle=True,
                              label_side="Left", label_place="Outwards", gap=gap)
+    top_rotated = rotating_top_pallet(pallet_x, pallet_y, box_x, box_y, middle=True,
+                                      label_side="Left", label_place="Outwards", gap=gap)
     sp = generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=True,
                            label_side="Left", label_place="Outwards", gap=gap)
 
     oop_layer_1 = oop[0]
     oop_layer_2 = oop[1]
     top_layer_1 = top[0]
-    top_layer_2 = top[1]
+    top_layer_2 = top_rotated
     sp_layer_1 = sp[0]
     sp_layer_2 = sp[1]
 
