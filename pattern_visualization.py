@@ -136,8 +136,8 @@ def drawing_pallet_pattern(pallet_x, pallet_y, box_dim1, box_dim2, output_box_li
 # Calling the drawing for every layer and pattern to test the output
 def main():
     # Input parameters
-    pallet_x = 28
-    pallet_y = 11
+    pallet_x = 29
+    pallet_y = 35
     box_x = 3
     box_y = 2
     gap = 0
