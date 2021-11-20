@@ -1,5 +1,6 @@
 import math
 import csv
+import xlsxwriter
 
 from pattern_loadings import one_order_pattern, two_order_pattern, squared_pattern
 
@@ -54,14 +55,38 @@ for box_x in range(1, 8, 2):
                         if unpacked_boxes >= 5:
                             critical_cases.append([pallet_x, pallet_y, box_x, box_y])
 
-with open('test2.csv', 'w', newline='') as csvfile:
-    test_writer = csv.writer(csvfile, delimiter=',',
-                            quotechar=',', quoting=csv.QUOTE_MINIMAL)
-    test_writer.writerow(list_packed)
-    test_writer.writerow(list_unpacked)
-    test_writer.writerow(critical_cases)
-
+# with open('test2.csv', 'w', newline='') as csvfile:
+#     test_writer = csv.writer(csvfile, delimiter=',',
+#                             quotechar=',', quoting=csv.QUOTE_MINIMAL)
+#     test_writer.writerow(list_packed)
+#     test_writer.writerow(list_unpacked)
+#     test_writer.writerow(critical_cases)
 
 print(list_packed)
 print(list_unpacked)
 print(critical_cases)
+
+# Create a workbook and add a worksheet.
+workbook = xlsxwriter.Workbook('test_geri.xlsx')
+worksheet = workbook.add_worksheet()
+
+col = 0
+for item in list_packed:
+    worksheet.write(0, col, item)
+    col += 1
+
+col = 0
+for item in list_unpacked:
+    worksheet.write(1, col, item)
+    col += 1
+
+col = 0
+for items in critical_cases:
+    str1 = ""
+    for item in items:
+        str1 += str(item) + " "
+    str1 = str1.rstrip()
+    worksheet.write(2, col, str1)
+    col += 1
+
+workbook.close()
