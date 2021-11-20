@@ -145,35 +145,26 @@ def main():
     color_c = color_rgb(239, 228, 176)
 
     # Generating the required output box lists with the box coordinates for each layer and pattern
-    oop = generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=True,
-                             label_side="Left", label_place="Outwards", gap=gap)
-    top = generate_boxes_top(pallet_x, pallet_y, box_x, box_y, middle=True,
-                             label_side="Left", label_place="Outwards", gap=gap)
-    top_rotated = rotating_top_pallet(pallet_x, pallet_y, box_x, box_y, middle=True,
-                                      label_side="Left", label_place="Outwards", gap=gap)
-    sp = generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=True,
-                           label_side="Left", label_place="Outwards", gap=gap)
-
-    oop_layer_1 = oop[0]
-    oop_layer_2 = oop[1]
-    top_layer_1 = top[0]
-    top_layer_2 = top_rotated
-    sp_layer_1 = sp[0]
-    sp_layer_2 = sp[1]
+    oop_layer_1, oop_layer_2 = generate_boxes_oop(pallet_x, pallet_y, box_x, box_y, middle=True,
+                                                  label_side="Left", label_place="Outwards", gap=gap)
+    top_layer_1, top_layer_2 = rotating_top_pallet(pallet_x, pallet_y, box_x, box_y, middle=True,
+                                                   label_side="Left", label_place="Outwards", gap=gap)
+    sp_layer_1, sp_layer_2 = generate_boxes_sp(pallet_x, pallet_y, box_x, box_y, middle=True,
+                                               label_side="Left", label_place="Outwards", gap=gap)
 
     # Drawing the different layers
-    """drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, oop_layer_1, "One order pattern - Layer A",
+    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, oop_layer_1, "One order pattern - Layer A",
                            labeling=True, label_side="Left")
     drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, oop_layer_2, "One order pattern - Layer B",
-                           labeling=True, label_side="Left", color=color_c)"""
+                           labeling=True, label_side="Left", color=color_c)
     drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, top_layer_1, "Two order pattern - Layer A",
                            labeling=True, label_side="Left")
     drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, top_layer_2, "Two order pattern - Layer B",
                            labeling=True, label_side="Left", color=color_b)
-    """drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, sp_layer_1, "Squared pattern - Layer A",
+    drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, sp_layer_1, "Squared pattern - Layer A",
                            labeling=True, label_side="Left")
     drawing_pallet_pattern(pallet_x, pallet_y, box_x, box_y, sp_layer_2, "Squared pattern - Layer B",
-                           labeling=True, label_side="Left", color=color_b)"""
+                           labeling=True, label_side="Left", color=color_b)
 
 
 main()
