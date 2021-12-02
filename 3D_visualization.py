@@ -1,12 +1,13 @@
 import matplotlib.pyplot as plt
+import numpy as np
 from generating_boxlists import generate_boxes_top
 from z_dimension import generating_3D_output
-import random
 
-from mpl_toolkits.mplot3d import Axes3D
-import numpy as np
 
 # Input parameters
+
+"""-------------------------- PARAMETERS TO CHANGE --------------------------"""
+# Hint: pallet X and Y dimension should be between 100-150 (Multiple or divide everything to fit in that range)
 pallet_X = 100
 pallet_Y = 110
 pallet_Z = 50
@@ -14,8 +15,10 @@ box_X = 25
 box_Y = 31
 box_Z = 22
 gap = 5
+"""-------------------------- PARAMETERS TO CHANGE --------------------------"""
 
-top_layer_1, top_layer_2 = generate_boxes_top(pallet_X, pallet_Y, box_X, box_Y, middle=True, label_side="Right", label_place="Outwards", gap=gap)
+top_layer_1, top_layer_2 = generate_boxes_top(pallet_X, pallet_Y, box_X, box_Y, middle=True, label_side="Right",
+                                              label_place="Outwards", gap=gap)
 
 output_box_list = generating_3D_output(top_layer_1, top_layer_2, box_Z,
                                        generation_method="max_load", generation_limit=50, mass_box=2, slip_sheet=0)

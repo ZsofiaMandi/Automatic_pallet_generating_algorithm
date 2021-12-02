@@ -1,5 +1,7 @@
 import copy
 
+""" STARTING FUTURE IMPROVEMENT, NOT FOR CHECK YET :) """
+
 
 def stretching(output_box_list, pallet_x, pallet_y, box_x, box_y, num_x, num_y):
 

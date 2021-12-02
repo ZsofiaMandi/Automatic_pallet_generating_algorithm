@@ -3,6 +3,8 @@ from z_dimension import generating_3D_output
 import copy
 
 # Input parameters
+
+"""-------------------------- PARAMETERS TO CHANGE --------------------------"""
 pallet_X = 500 / 1000
 pallet_Y = 550 / 1000
 pallet_Z = 250 / 1000
@@ -11,9 +13,10 @@ box_Y = 170 / 1000
 box_Z = 110 / 1000
 Pick_up_pose = [691.35 / 1000, 385.66 / 1000, 102.5 / 1000, 2.221, -2.221, 0.0]
 Pallet_coordinate_system = [-298.51 / 1000, -783.0 / 1000, -17.5 / 1000, 0.0, 0.0, 0.0]
+"""-------------------------- PARAMETERS TO CHANGE --------------------------"""
 
 tp_layer_1, tp_layer_2 = generate_boxes_top(pallet_X, pallet_Y, box_X, box_Y,
-                                           middle=True, label_side="Left", label_place="Outwards")
+                                            middle=True, label_side="Left", label_place="Outwards")
 
 output_box_list = generating_3D_output(tp_layer_1, tp_layer_2, box_Z,
                                        generation_method="max_height", generation_limit=pallet_Z)
